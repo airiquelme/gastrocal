@@ -13,9 +13,9 @@ function BoolButton({name, title, value, setValue, disabled}){
 
     return(
         <>
-        <div className="grid md:grid-flow-col gap-4">
+        <div className="grid md:grid-flow-col md:grid-cols-1 gap-4">
             <label htmlFor={name} className="block  mb-1">{title}</label>
-            <input type="checkbox" value={value} onChange={handleChange} disabled={disabled}>
+            <input className="w-10" id={name} type="checkbox" value={value} onChange={handleChange} disabled={disabled}>
             </input>
         </div>
         </>

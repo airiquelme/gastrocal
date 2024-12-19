@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import PrimaryButton from "../components/PrimaryButton"
 import InputText from "../components/InputText";
 import SelectDropdown from "../components/SelectDropdown";
+import BoolButton from "../components/BoolButton";
 import { calcular_probabilidad_cancer_gastrico } from "../utils/calculadora_cancer_gastrico";
 
 function Calculator(){
@@ -68,8 +69,8 @@ function Calculator(){
                             <SelectDropdown name="sexo" title="Sexo" value={sexo} setValue={setSexo} options={opciones_edad}/>
                         </div>
                         <div className="grid md:grid-flow-col md:grid-cols-2 gap-4">
-                            <SelectDropdown name="antecedentes" title="Antecedentes familiares de primer grado" value={antecedentes} setValue={setAntecedentes} options={opciones_antecedentes}/>
-                            <SelectDropdown name="panel_serologico" title="Panel serologico gastrico" value={panelSerologico} setValue={setPanelSerologico} options={opciones_panel_serologico}/>
+                            <BoolButton name="antecedentes" title="Antecedentes familiares de primer grado" value={antecedentes} setValue={setAntecedentes}/>
+                            <BoolButton name="panel_serologico" title="Panel serologico gastrico" value={panelSerologico} setValue={setPanelSerologico}/>
                         </div>
                         <PrimaryButton action={undefined} disabled={false}>Calcular</PrimaryButton>
                     </form>
