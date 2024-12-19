@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import PrimaryButton from "../components/PrimaryButton"
 import InputText from "../components/InputText";
 import SelectDropdown from "../components/SelectDropdown";
-import BoolButton from "../components/BoolButton";
+// import BoolButton from "../components/BoolButton";
 import { calcular_probabilidad_cancer_gastrico } from "../utils/calculadora_cancer_gastrico";
 
 function Calculator(){
 
-    const [edad, setEdad] = useState(20)
+    const [edad, setEdad] = useState(18)
     const [sexo, setSexo] = useState(0)
     const [antecedentes, setAntecedentes] = useState(0)
     const [panelSerologico, setPanelSerologico] = useState(0)
@@ -29,17 +29,23 @@ function Calculator(){
 
         try{
             setResultado(calcular_probabilidad_cancer_gastrico(variables))
-        }catch{
-            setResultado("ERROR")
+        }catch(error){
+            setResultado(error)
         }
     }
 
     useEffect(() => {
-        if(resultado === "ERROR"){
+        if(!resultado){
+            return;
+        }
+
+        if(resultado.constructor === Error){
             setMostrarResultadoPorcentaje("Error")
-            setMostrarResultadoTexto("La edad debe ser entre 18 y 80 años")
+            setMostrarResultadoTexto(resultado.message)
         }else{
-            setMostrarResultadoPorcentaje(resultado)
+            const resultado_porcentaje = (resultado * 100).toFixed(2)
+            setMostrarResultadoPorcentaje(resultado_porcentaje + "%")
+            setMostrarResultadoTexto("Agregar resultado aquí")
         }
     }, [resultado])
 
@@ -60,7 +66,7 @@ function Calculator(){
 
     return(
         <main className="bg-slate-100 w-screen min-h-[calc(100vh-64px)] p-10">
-            <h2 className="text-2xl font-bold">Calculadora de riesgo de cáncer gastrico</h2>
+            <h2 className="text-2xl font-bold text-center">Calculadora de riesgo de cáncer gastrico</h2>
             <div className="grid md:grid-flow-col md:grid-cols-[3fr_2fr] gap-2 md:gap-3 sm:w-11/12 md:columns-32 m-auto sm:max-w-6xl">
                 <div className="mt-5 p-5 bg-white rounded-lg shadow">
                     <form action="" onSubmit={handleSubmit} className="w-full grid gap-4">
@@ -69,16 +75,19 @@ function Calculator(){
                             <SelectDropdown name="sexo" title="Sexo" value={sexo} setValue={setSexo} options={opciones_edad}/>
                         </div>
                         <div className="grid md:grid-flow-col md:grid-cols-2 gap-4">
-                            <BoolButton name="antecedentes" title="Antecedentes familiares de primer grado" value={antecedentes} setValue={setAntecedentes}/>
-                            <BoolButton name="panel_serologico" title="Panel serologico gastrico" value={panelSerologico} setValue={setPanelSerologico}/>
+                            <SelectDropdown name="antecedentes" title="Antecedentes familiares de primer grado" value={antecedentes} setValue={setAntecedentes} options={opciones_antecedentes}/>
+                            <SelectDropdown name="panel_serologico" title="Panel serologico gastrico" value={panelSerologico} setValue={setPanelSerologico} options={opciones_panel_serologico}/>
+                            {/* <BoolButton name="antecedentes" title="Antecedentes familiares de primer grado" value={antecedentes} setValue={setAntecedentes}/>
+                            <BoolButton name="panel_serologico" title="Panel serologico gastrico" value={panelSerologico} setValue={setPanelSerologico}/> */}
                         </div>
                         <PrimaryButton action={undefined} disabled={false}>Calcular</PrimaryButton>
                     </form>
                 </div>
-                <div className="mt-5 p-5 bg-white rounded-lg shadow">
-                    <p className="text-4xl">
+                <div className="mt-5 p-5 bg-white rounded-lg shadow text-center">
+                    <p className="text-5xl mb-2 font-bold">
                         {mostrarResultadoPorcentaje}
                     </p>
+                    <p className="text-slate-700">{mostrarResultadoTexto}</p>
                 </div>
             </div>
         </main>
