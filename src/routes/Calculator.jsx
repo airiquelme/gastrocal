@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useIsVisible } from "../hooks/useIsVisible";
 import PrimaryButton from "../components/PrimaryButton"
 import InputText from "../components/InputText";
 import SelectDropdown from "../components/SelectDropdown";
@@ -17,6 +18,9 @@ function Calculator(){
     const [mostrarResultadoPorcentaje, setMostrarResultadoPorcentaje] = useState("N/A")
     const [mostrarResultadoTexto, setMostrarResultadoTexto] = useState("Ingresa valores en la calculadora")
 
+    const card_resultados = useRef();
+    let resultados_en_pantalla = useIsVisible(card_resultados);
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -25,6 +29,17 @@ function Calculator(){
             sexo,
             antecedentes, 
             panel_serologico: panelSerologico
+        }
+
+        // alert(resultados_en_pantalla)
+        // alert(card_resultados.current.getBoundingClientRect().top)
+
+        //Realizar scroll tras resultados
+        if(!resultados_en_pantalla){
+            window.scrollTo({
+                top: card_resultados.current.getBoundingClientRect().top - document.body.getBoundingClientRect().top,
+                behavior: 'smooth'
+            })
         }
 
         try{
@@ -67,8 +82,8 @@ function Calculator(){
     return(
         <main className="bg-slate-100 w-screen min-h-[calc(100vh-64px)] p-10">
             <h2 className="text-2xl font-bold text-center">Calculadora de riesgo de cáncer gastrico</h2>
-            <div className="grid md:grid-flow-col md:grid-cols-[3fr_2fr] gap-2 md:gap-3 sm:w-11/12 md:columns-32 m-auto sm:max-w-6xl">
-                <div className="mt-5 p-5 bg-white rounded-lg shadow">
+            <div className="grid gap-2 md:gap-3 sm:w-11/12 md:columns-32 m-auto sm:max-w-6xl">
+                <div className="mt-5 p-5 bg-white rounded-md shadow">
                     <form action="" onSubmit={handleSubmit} className="w-full grid gap-4">
                         <div className="grid md:grid-flow-col md:grid-cols-2 gap-4">
                             <InputText name="edad" title="Edad" type="number" value={edad} setValue={setEdad}/>
@@ -83,7 +98,7 @@ function Calculator(){
                         <PrimaryButton action={undefined} disabled={false}>Calcular</PrimaryButton>
                     </form>
                 </div>
-                <div className="mt-5 p-5 bg-white rounded-lg shadow text-center">
+                <div className="mt-5 p-5 bg-white rounded-md shadow text-center" ref={card_resultados}>
                     <p className="text-5xl mb-2 font-bold">
                         {mostrarResultadoPorcentaje}
                     </p>
