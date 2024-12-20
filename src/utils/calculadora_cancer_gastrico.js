@@ -1,9 +1,17 @@
 export const calcular_probabilidad_cancer_gastrico = (variables) => {
-    const {edad, sexo, antecedentes, panel_serologico} = variables;
+    const {dia_i, dia_f, mes_i, mes_f, ano_i, ano_f, sexo, antecedentes, panel_serologico} = variables;
 
-    if(edad < 18 || edad > 80){
-        throw new Error("Edad debe ser entre 18 y 80 años")
-    }
+    const date_i = new Date()
+    date_i.setDate(dia_i)
+    date_i.setMonth(mes_i-1)
+    date_i.setFullYear(ano_i)
+    const date_f = new Date()
+    date_f.setDate(dia_f)
+    date_f.setMonth(mes_f-1)
+    date_f.setFullYear(ano_f)
+    const edad = new Date(date_f-date_i).getFullYear()-1970
+
+    console.log(edad)
 
     const peso_edad = 0.01 * edad;
     const peso_sexo = -0.04 * sexo;

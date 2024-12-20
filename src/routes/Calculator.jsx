@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useIsVisible } from "../hooks/useIsVisible";
 import PrimaryButton from "../components/PrimaryButton"
+import TrashButton from "../components/TrashButton";
 import InputText from "../components/InputText";
 import SelectDropdown from "../components/SelectDropdown";
 // import BoolButton from "../components/BoolButton";
@@ -9,13 +10,14 @@ import { use } from "react";
 
 function Calculator(){
 
-    const [edad, setEdad] = useState(18)
-    const [dia_i, setDia_i] = useState(0)
-    const [mes_i, setMes_i] = useState(0)
-    const [ano_i, setAno_i] = useState(0)
-    const [dia_f, setDia_f] = useState(0)
-    const [mes_f, setMes_f] = useState(0)
-    const [ano_f, setAno_f] = useState(0)
+    const hoy = new Date()
+
+    const [dia_i, setDia_i] = useState(hoy.getDate())
+    const [mes_i, setMes_i] = useState(hoy.getMonth()+1)
+    const [ano_i, setAno_i] = useState(hoy.getFullYear())
+    const [dia_f, setDia_f] = useState(hoy.getDate())
+    const [mes_f, setMes_f] = useState(hoy.getMonth()+1)
+    const [ano_f, setAno_f] = useState(hoy.getFullYear())
     const [sexo, setSexo] = useState(0)
     const [antecedentes, setAntecedentes] = useState(0)
     const [panelSerologico, setPanelSerologico] = useState(0)
@@ -25,6 +27,7 @@ function Calculator(){
     const [mostrarResultadoPorcentaje, setMostrarResultadoPorcentaje] = useState("N/A")
     const [mostrarResultadoTexto, setMostrarResultadoTexto] = useState("Ingresa valores en la calculadora")
 
+    const form_calcuadora = useRef();
     const card_resultados = useRef();
     let resultados_en_pantalla = useIsVisible(card_resultados);
 
@@ -38,7 +41,6 @@ function Calculator(){
             mes_f,
             ano_i,
             ano_f,
-            edad,
             sexo,
             antecedentes, 
             panel_serologico: panelSerologico
@@ -62,6 +64,23 @@ function Calculator(){
         }
     }
 
+    const handleReset = (e) => {
+        e.preventDefault();
+        setDia_i(hoy.getDate())
+        setMes_i(hoy.getMonth()+1)
+        setAno_i(hoy.getFullYear())
+        setDia_f(hoy.getDate())
+        setMes_f(hoy.getMonth()+1)
+        setAno_f(hoy.getFullYear())
+        setSexo(0)
+        setAntecedentes(0)
+        setPanelSerologico(0)
+        setResultado(null)
+
+        setMostrarResultadoPorcentaje("N/A")
+        setMostrarResultadoTexto("Ingresa valores en la calculadora")
+    }
+
     useEffect(() => {
         if(!resultado){
             return;
@@ -77,7 +96,7 @@ function Calculator(){
         }
     }, [resultado])
 
-    const opciones_edad = [
+    const opciones_sexo = [
         {name: "Masculino", value: 0},
         {name: "Femenino", value: 1}
     ]
@@ -102,7 +121,7 @@ function Calculator(){
         {name: "Diciembre", value: 12}
     ]
 
-    const ano = 2024
+    const ano = hoy.getFullYear()
     const opciones_ano = [];
     for (let i = 0; i < 120; i++) {
         opciones_ano.push({name: String(ano-i), value: ano-i});
@@ -120,10 +139,13 @@ function Calculator(){
 
     return(
         <main className="bg-slate-100 w-screen min-h-[calc(100vh-64px)] p-10">
-            <h2 className="text-2xl font-bold text-center">Calculadora de riesgo de cáncer gastrico</h2>
+            <div className="grid gap-2 md:gap-3 sm:w-11/12 md:columns-32 m-auto sm:max-w-6xl md:grid-cols-2">
+                <h2 className="text-2xl font-bold">Calculadora de riesgo de cáncer gastrico</h2>
+                <TrashButton action={handleReset}>Borrar Datos</TrashButton>
+            </div>
             <div className="grid gap-2 md:gap-3 sm:w-11/12 md:columns-32 m-auto sm:max-w-6xl">
                 <div className="mt-5 p-5 bg-white rounded-md shadow">
-                    <form action="" onSubmit={handleSubmit} className="w-full grid gap-4">
+                    <form action="" onSubmit={handleSubmit} className="w-full grid gap-4" ref={form_calcuadora}>
                     <p>Fecha de Nacimiento</p>
                         <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
                             <SelectDropdown name="dia_i" title="Día" value={dia_i} setValue={setDia_i} options={opciones_dia}/>
@@ -140,8 +162,7 @@ function Calculator(){
                             <SelectDropdown name="ano_f" title="Año" value={ano_f} setValue={setAno_f} options={opciones_ano}/>
                         </div>
                         <div className="grid md:grid-flow-col md:grid-cols-2 gap-4">
-                            <InputText name="edad" title="Edad" type="number" value={edad} setValue={setEdad}/>
-                            <SelectDropdown name="sexo" title="Sexo" value={sexo} setValue={setSexo} options={opciones_edad}/>
+                            <SelectDropdown name="sexo" title="Sexo" value={sexo} setValue={setSexo} options={opciones_sexo}/>
                         </div>
                         <div className="grid md:grid-flow-col md:grid-cols-2 gap-4">
                             <SelectDropdown name="antecedentes" title="Antecedentes familiares de primer grado" value={antecedentes} setValue={setAntecedentes} options={opciones_antecedentes}/>
