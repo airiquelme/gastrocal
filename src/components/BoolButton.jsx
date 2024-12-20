@@ -1,6 +1,13 @@
-function BoolButton({name, title, value, setValue, disabled}){
-    const background_color = disabled ? "bg-slate-400" : "bg-sky-500 hover:bg-sky-400 active:bg-sky-600"
-    const text_color = disabled ? "text-slate-300" : "text-white"
+import { useEffect } from "react";
+
+function BoolButton({name, title, value, setValue}){
+    const text_color = value ? "text-sky-700" : "text-black";
+    const text_bold = value ? "font-bold" : "font-normal";
+    let confirm_msg =  value ? "SÍ" : "NO"
+
+    useEffect(() => {
+        confirm_msg = value ? "SÍ" : "NO"
+    }, [value])
 
     const handleChange = (e) => {
         setValue(1)
@@ -13,10 +20,10 @@ function BoolButton({name, title, value, setValue, disabled}){
 
     return(
         <>
-        <div className="grid md:grid-flow-col md:grid-cols-1 gap-4">
-            <input className="w-6" id={name} type="checkbox" value={value} onChange={handleChange} disabled={disabled}>
+        <div className="flex items-center gap-2">
+            <input className="w-6 h-6 block" id={name} type="checkbox" value={value} checked={value} onChange={handleChange}>
             </input>
-            <label htmlFor={name} className="block  mb-1">{title}</label>
+            <label htmlFor={name} className={`block mb-1 select-none ${text_color} ${text_bold}`}>{confirm_msg} {title}</label>
         </div>
         </>
     )

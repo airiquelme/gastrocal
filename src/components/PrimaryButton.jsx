@@ -3,7 +3,7 @@ function PrimaryButton({children, action, disabled}){
     const text_color = disabled ? "text-slate-300" : "text-white"
 
     return(
-        <button onClick={action} disabled={disabled} className={`px-8 py-2 rounded-lg ${text_color} ${background_color}`}>
+        <button type="button" onClick={action} disabled={disabled} className={`px-8 py-2 rounded-lg ${text_color} ${background_color}`}>
             {children}
         </button>
     )

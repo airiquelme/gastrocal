@@ -1,14 +1,22 @@
 export const calcular_probabilidad_cancer_gastrico = (variables) => {
+    for(let item in variables){
+        if(variables[item] == -1){
+            throw new Error("Parámetro inválido. Verifica si los datos están correctos")
+        }
+    };
+
     const {dia_i, dia_f, mes_i, mes_f, ano_i, ano_f, sexo, antecedentes, panel_serologico} = variables;
 
     const date_i = new Date()
     date_i.setDate(dia_i)
     date_i.setMonth(mes_i-1)
     date_i.setFullYear(ano_i)
+
     const date_f = new Date()
     date_f.setDate(dia_f)
     date_f.setMonth(mes_f-1)
     date_f.setFullYear(ano_f)
+
     const edad = new Date(date_f-date_i).getFullYear()-1970
 
     console.log(edad)
