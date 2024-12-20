@@ -5,10 +5,17 @@ import InputText from "../components/InputText";
 import SelectDropdown from "../components/SelectDropdown";
 // import BoolButton from "../components/BoolButton";
 import { calcular_probabilidad_cancer_gastrico } from "../utils/calculadora_cancer_gastrico";
+import { use } from "react";
 
 function Calculator(){
 
     const [edad, setEdad] = useState(18)
+    const [dia_i, setDia_i] = useState(0)
+    const [mes_i, setMes_i] = useState(0)
+    const [ano_i, setAno_i] = useState(0)
+    const [dia_f, setDia_f] = useState(0)
+    const [mes_f, setMes_f] = useState(0)
+    const [ano_f, setAno_f] = useState(0)
     const [sexo, setSexo] = useState(0)
     const [antecedentes, setAntecedentes] = useState(0)
     const [panelSerologico, setPanelSerologico] = useState(0)
@@ -25,6 +32,12 @@ function Calculator(){
         e.preventDefault();
 
         const variables = {
+            dia_i,
+            dia_f,
+            mes_i,
+            mes_f,
+            ano_i,
+            ano_f,
             edad,
             sexo,
             antecedentes, 
@@ -69,6 +82,32 @@ function Calculator(){
         {name: "Femenino", value: 1}
     ]
 
+    const opciones_dia = [];
+    for (let i = 1; i < 32; i++) {
+        opciones_dia.push({name: String(i), value: i});
+    }
+
+    const opciones_mes = [
+        {name: "Enero", value: 1},
+        {name: "Febrero", value: 2},
+        {name: "Marzo", value: 3},
+        {name: "Abril", value: 4},
+        {name: "Mayo", value: 5},
+        {name: "Junio", value: 6},
+        {name: "Julio", value: 7},
+        {name: "Agosto", value: 8},
+        {name: "Septiembre", value: 9},
+        {name: "Octubre", value: 10},
+        {name: "Noviembre", value: 11},
+        {name: "Diciembre", value: 12}
+    ]
+
+    const ano = 2024
+    const opciones_ano = [];
+    for (let i = 0; i < 120; i++) {
+        opciones_ano.push({name: String(ano-i), value: ano-i});
+    }
+
     const opciones_antecedentes = [
         {name: "Sin antecedentes", value: 0},
         {name: "Con antecedentes", value: 1}
@@ -85,6 +124,21 @@ function Calculator(){
             <div className="grid gap-2 md:gap-3 sm:w-11/12 md:columns-32 m-auto sm:max-w-6xl">
                 <div className="mt-5 p-5 bg-white rounded-md shadow">
                     <form action="" onSubmit={handleSubmit} className="w-full grid gap-4">
+                    <p>Fecha de Nacimiento</p>
+                        <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
+                            <SelectDropdown name="dia_i" title="Día" value={dia_i} setValue={setDia_i} options={opciones_dia}/>
+                            <SelectDropdown name="mes_i" title="Mes" value={mes_i} setValue={setMes_i} options={opciones_mes}/>
+                            <SelectDropdown name="ano_i" title="Año" value={ano_i} setValue={setAno_i} options={opciones_ano}/>
+                        </div>
+                        <div className="grid md:grid-flow-col md:grid-cols-1 gap-4">
+                            <p>Fecha de Evaluación</p>
+                            <p>Hoy</p>
+                        </div>
+                        <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
+                            <SelectDropdown name="dia_f" title="Día" value={dia_f} setValue={setDia_f} options={opciones_dia}/>
+                            <SelectDropdown name="mes_f" title="Mes" value={mes_f} setValue={setMes_f} options={opciones_mes}/>
+                            <SelectDropdown name="ano_f" title="Año" value={ano_f} setValue={setAno_f} options={opciones_ano}/>
+                        </div>
                         <div className="grid md:grid-flow-col md:grid-cols-2 gap-4">
                             <InputText name="edad" title="Edad" type="number" value={edad} setValue={setEdad}/>
                             <SelectDropdown name="sexo" title="Sexo" value={sexo} setValue={setSexo} options={opciones_edad}/>
