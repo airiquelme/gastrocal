@@ -2,9 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { useIsVisible } from "../hooks/useIsVisible";
 import PrimaryButton from "../components/PrimaryButton"
 import TrashButton from "../components/TrashButton";
+import InputText from "../components/InputText";
 import SelectDropdown from "../components/SelectDropdown";
 import BoolButton from '../components/BoolButton';
-import SimpleContentSeparator from "../components/SimpleContentSeparator";
+import FormContentSeparator from "../components/FormContentSeparator";
+import SubContentSeparator from "../components/SubContentSeparator";
 import { calcular_probabilidad_cancer_gastrico } from "../utils/calculadora_cancer_gastrico";
 
 function Calculator(){
@@ -23,6 +25,8 @@ function Calculator(){
 
     const [hipertension, setHipertension] = useState(false);
     const [diabetes, setDiabetes] = useState(false);
+    const [peso, setPeso] = useState(0)
+    const [talla, setTalla] = useState(0)
 
     const [resultado, setResultado] = useState(null)
     const [error, setError] = useState(false)
@@ -79,6 +83,8 @@ function Calculator(){
         setError(false)
         setHipertension(false)
         setDiabetes(false)
+        setPeso(0)
+        setTalla(0)
 
         setMostrarResultadoPorcentaje("N/A")
         setMostrarResultadoTexto("Ingresa valores en la calculadora")
@@ -161,43 +167,59 @@ function Calculator(){
             <div className="grid gap-2 md:gap-3 sm:w-11/12 md:columns-32 m-auto sm:max-w-6xl">
                 <div className="mt-5 p-5 bg-white rounded-md shadow">
                     <form action="" onSubmit={handleSubmit} className="w-full grid gap-4" ref={form_calcuadora}>
-                        <SimpleContentSeparator title={"Fecha de Nacimiento"}>
-                            <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
-                                <SelectDropdown error={error} name="dia_i" title="Día" value={dia_i} setValue={setDia_i} options={opciones_dia}/>
-                                <SelectDropdown error={error} name="mes_i" title="Mes" value={mes_i} setValue={setMes_i} options={opciones_mes}/>
-                                <SelectDropdown error={error} name="ano_i" title="Año" value={ano_i} setValue={setAno_i} options={opciones_ano}/>
-                            </div>
-                        </SimpleContentSeparator>
 
-                        <div className="pb-6 mb-3 border-b border-gray-300">
-                            <div className="grid md:grid-flow-col md:grid-cols-1 gap-4">
-                                <p className="font-md text-slate-600 font-semibold">Fecha de Evaluación</p>
-                                <PrimaryButton action={setCurrentDate}>Fecha de hoy</PrimaryButton>
+                        <FormContentSeparator>
+                            <div className="pb-3 mb-3">
+                                <div className="grid md:grid-flow-col md:grid-cols-1 gap-4">
+                                    <p className="text-xl text-sky-600 font-semibold">Fecha de Evaluación</p>
+                                    <PrimaryButton action={setCurrentDate}>Fecha de hoy</PrimaryButton>
+                                </div>
+                                <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
+                                    <SelectDropdown error={error} name="dia_f" title="Día" value={dia_f} setValue={setDia_f} options={opciones_dia}/>
+                                    <SelectDropdown error={error} name="mes_f" title="Mes" value={mes_f} setValue={setMes_f} options={opciones_mes}/>
+                                    <SelectDropdown error={error} name="ano_f" title="Año" value={ano_f} setValue={setAno_f} options={opciones_ano}/>
+                                </div>
                             </div>
-                            <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
-                                <SelectDropdown error={error} name="dia_f" title="Día" value={dia_f} setValue={setDia_f} options={opciones_dia}/>
-                                <SelectDropdown error={error} name="mes_f" title="Mes" value={mes_f} setValue={setMes_f} options={opciones_mes}/>
-                                <SelectDropdown error={error} name="ano_f" title="Año" value={ano_f} setValue={setAno_f} options={opciones_ano}/>
-                            </div>
-                        </div>
-                        
-                        <SimpleContentSeparator title={"Datos del Paciente"}>
-                            <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
-                                <SelectDropdown name="sexo" title="Sexo" value={sexo} setValue={setSexo} options={opciones_sexo}/>
-                                <BoolButton name={"hipertension"} title={"posee Hipertensión"} value={hipertension} setValue={setHipertension} />
-                                <BoolButton name={"diabetes"} title={"posee Diabetes Mellitus"} value={diabetes} setValue={setDiabetes} />
-                            </div>
+                        </FormContentSeparator>
 
-                            {/* <div className="pb-6 mb-3 border-b border-gray-300 grid gap-4">
-                                <div className="grid md:grid-flow-col md:grid-cols-2 gap-4">
+                        <FormContentSeparator title={"Datos primarios del paciente"}>
+                            <SubContentSeparator title={"Fecha de Nacimiento"}>
+                                <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
+                                    <SelectDropdown error={error} name="dia_i" title="Día" value={dia_i} setValue={setDia_i} options={opciones_dia}/>
+                                    <SelectDropdown error={error} name="mes_i" title="Mes" value={mes_i} setValue={setMes_i} options={opciones_mes}/>
+                                    <SelectDropdown error={error} name="ano_i" title="Año" value={ano_i} setValue={setAno_i} options={opciones_ano}/>
+                                </div>
+                            </SubContentSeparator>
+
+                            <SubContentSeparator title={"Otros"}>
+                                <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
                                     <SelectDropdown name="sexo" title="Sexo" value={sexo} setValue={setSexo} options={opciones_sexo}/>
+                                    <InputText name={"peso"} title={"Peso en Kilogramos"} error={error} type="number" placeholder="Peso (en Kg)" value={peso} setValue={setPeso} />
+                                    <InputText name={"talla"} title={"Talla en centímetros"} error={error} type="number" placeholder="Talla (en cm)" value={talla} setValue={setTalla} />
                                 </div>
-                                <div className="grid md:grid-flow-col md:grid-cols-2 gap-4">
-                                    <SelectDropdown name="antecedentes" title="Antecedentes familiares de primer grado (Padres y/o hermanos)" value={antecedentes} setValue={setAntecedentes} options={opciones_antecedentes}/>
-                                    <SelectDropdown name="panel_serologico" title="Panel serologico gastrico" value={panelSerologico} setValue={setPanelSerologico} options={opciones_panel_serologico}/>
+                            </SubContentSeparator>
+                        </FormContentSeparator>
+
+                        <FormContentSeparator title={"Antecedentes médicos del paciente"}>
+
+                            <SubContentSeparator title={"Información Médica"}>
+                                <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
+                                <SelectDropdown name="antecedentes" title="Antecedentes familiares de primer grado (Padres y/o hermanos)" value={antecedentes} setValue={setAntecedentes} options={opciones_antecedentes}/>
+                                    <BoolButton name={"hipertension"} title={"posee Hipertensión"} value={hipertension} setValue={setHipertension} />
+                                    <BoolButton name={"diabetes"} title={"posee Diabetes Mellitus"} value={diabetes} setValue={setDiabetes} />
                                 </div>
-                            </div> */}
-                        </SimpleContentSeparator>
+
+                                {/* <div className="pb-6 mb-3 border-b border-gray-300 grid gap-4">
+                                    <div className="grid md:grid-flow-col md:grid-cols-2 gap-4">
+                                       <SelectDropdown name="sexo" title="Sexo" value={sexo} setValue={setSexo} options={opciones_sexo}/>
+                                    </div>
+                                    <div className="grid md:grid-flow-col md:grid-cols-2 gap-4">
+                                        <SelectDropdown name="antecedentes" title="Antecedentes familiares de primer grado (Padres y/o hermanos)" value={antecedentes} setValue={setAntecedentes} options={opciones_antecedentes}/>
+                                        <SelectDropdown name="panel_serologico" title="Panel serologico gastrico" value={panelSerologico} setValue={setPanelSerologico} options={opciones_panel_serologico}/>
+                                    </div>
+                                </div> */} 
+                            </SubContentSeparator>
+                        </FormContentSeparator>
 
                         
                         <PrimaryButton action={handleSubmit}>Calcular</PrimaryButton>
