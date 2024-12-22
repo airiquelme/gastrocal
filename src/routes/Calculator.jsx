@@ -27,6 +27,12 @@ function Calculator(){
     const [diabetes, setDiabetes] = useState(false);
     const [peso, setPeso] = useState(0)
     const [talla, setTalla] = useState(0)
+    const [alcohol, setAlcohol] = useState(false);
+    const [tabaco, setTabaco] = useState(false);
+    const [pepsi1, setPepsi1] = useState(0);
+    const [pepsi2, setPepsi2] = useState(0);
+    const [igghpylori, setIgghpylori] = useState(0);
+    const [gastrina17, setGastrina17] = useState(0);
 
     const [resultado, setResultado] = useState(null)
     const [error, setError] = useState(false)
@@ -50,7 +56,15 @@ function Calculator(){
             ano_f,
             sexo,
             antecedentes, 
-            panel_serologico: panelSerologico
+            panel_serologico: panelSerologico,
+            talla,
+            peso,
+            hipertension,
+            diabetes,
+            alcohol,
+            tabaco,
+            igghpylori,
+            gastrina17
         }
 
         //Realizar scroll tras resultados
@@ -83,9 +97,14 @@ function Calculator(){
         setError(false)
         setHipertension(false)
         setDiabetes(false)
+        setTabaco(false)
+        setAlcohol(false)
         setPeso(0)
         setTalla(0)
-
+        setPepsi1(0)
+        setPepsi2(0)
+        setIgghpylori(0)
+        setGastrina17(0)
         setMostrarResultadoPorcentaje("N/A")
         setMostrarResultadoTexto("Ingresa valores en la calculadora")
     }
@@ -204,7 +223,7 @@ function Calculator(){
 
                             <SubContentSeparator title={"Información Médica"}>
                                 <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
-                                <SelectDropdown name="antecedentes" title="Antecedentes familiares de primer grado (Padres y/o hermanos)" value={antecedentes} setValue={setAntecedentes} options={opciones_antecedentes}/>
+                                    <SelectDropdown name="antecedentes" title="Antecedentes familiares de primer grado (Padres y/o hermanos)" value={antecedentes} setValue={setAntecedentes} options={opciones_antecedentes}/>
                                     <BoolButton name={"hipertension"} title={"posee Hipertensión"} value={hipertension} setValue={setHipertension} />
                                     <BoolButton name={"diabetes"} title={"posee Diabetes Mellitus"} value={diabetes} setValue={setDiabetes} />
                                 </div>
@@ -218,6 +237,32 @@ function Calculator(){
                                         <SelectDropdown name="panel_serologico" title="Panel serologico gastrico" value={panelSerologico} setValue={setPanelSerologico} options={opciones_panel_serologico}/>
                                     </div>
                                 </div> */} 
+                            </SubContentSeparator>
+                            <SubContentSeparator title={"Consumo del Paciente"}>
+                                <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
+                                    <BoolButton name={"tabaco"} title={"consume Tabaco"} value={tabaco} setValue={setTabaco} />
+                                    <BoolButton name={"alcohol"} title={"consume Alcohol"} value={alcohol} setValue={setAlcohol} />
+                                </div>
+                            </SubContentSeparator>
+                        </FormContentSeparator>
+
+                        <FormContentSeparator title={"Resultados Médicos"}>
+                            <SubContentSeparator title={"Mediciones de Pepsinogeno"}>
+                                <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
+                                    <InputText name={"pepsi1"} title={"Pepsinogeno I"} error={error} type="number" placeholder="" value={pepsi1} setValue={setPepsi1} />
+                                    <InputText name={"pepsi2"} title={"Pepsinogeno II"} error={error} type="number" placeholder="" value={pepsi2} setValue={setPepsi2} />
+                                    <div>
+                                        <p>Ratio Pepsinogeno I/II</p>
+                                        <p>{pepsi1/pepsi2}</p>
+                                    </div>
+                                </div>
+                            </SubContentSeparator>
+                            <SubContentSeparator title={"Medidas Adicionales"}>
+                                <div className="grid md:grid-flow-col md:grid-cols-3 gap-4">
+                                    <InputText name={"igghpylori"} title={"IgG H Pylori en la Sangre"} error={error} type="number" placeholder="" value={igghpylori} setValue={setIgghpylori} />
+                                    <InputText name={"gastrina17"} title={"Gastrina 17"} error={error} type="number" placeholder="" value={gastrina17} setValue={setGastrina17} />
+                                    <SelectDropdown name="panel_serologico" title="Panel Serológico Gástrico" value={panelSerologico} setValue={setPanelSerologico} options={opciones_panel_serologico}/>
+                                </div>
                             </SubContentSeparator>
                         </FormContentSeparator>
 
