@@ -6,6 +6,7 @@ export const calcular_probabilidad_cancer_gastrico = (variables) => {
     };
 
     const {dia_i, dia_f, mes_i, mes_f, ano_i, ano_f, sexo, antecedentes, panel_serologico} = variables;
+    //Constante // Hombre, IgG2, IgG3, PgI, PgII, PCR, Anti-CP, HTA
 
     const date_i = new Date()
     date_i.setDate(dia_i)
@@ -28,7 +29,7 @@ export const calcular_probabilidad_cancer_gastrico = (variables) => {
     const exponente = -(peso_edad + peso_sexo + peso_antecedentes + peso_panel_serologico - 0.24)
     
     const resultado =  1 / (1 + Math.exp(exponente))
-    return resultado;
+    return resultado; // [%, "recomendacion"]
 }
 
 export const interpretar_resultado_cancer_gastrico = (resultado) => {

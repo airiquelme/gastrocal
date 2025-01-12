@@ -8,6 +8,7 @@ import BoolButton from '../components/BoolButton';
 import FormContentSeparator from "../components/FormContentSeparator";
 import SubContentSeparator from "../components/SubContentSeparator";
 import { calcular_probabilidad_cancer_gastrico } from "../utils/calculadora_cancer_gastrico";
+import { calcular_adenocarcinoma2 } from "../utils/calculadora_adenocarcinoma2";
 
 function Calculator(){
 
@@ -77,6 +78,7 @@ function Calculator(){
 
         try{
             setResultado(calcular_probabilidad_cancer_gastrico(variables))
+            //setResultado(calcular_adenocarcinoma2(variables))
         }catch(error){
             setResultado(error)
         }

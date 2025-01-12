@@ -1,0 +1,4 @@
+Meter los logos en la página
+    (se muestren siempre en una barra? O en un costado? Arriba, o abajo?)
+
+Hacer nuevas calculadoras.
