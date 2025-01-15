@@ -1,4 +1,5 @@
-Meter los logos en la página
+1. Meter los logos en la página
     (se muestren siempre en una barra? O en un costado? Arriba, o abajo?)
 
-Hacer nuevas calculadoras.
+2. Hacer nuevas calculadoras.
+3. Agregar componente de Ratio Pepsinogeno I/II a nueva calculadora

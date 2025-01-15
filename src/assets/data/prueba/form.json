@@ -1,0 +1,64 @@
+{
+    "title": "Ejemplo de variables en nuevo tipo de calculadora",
+    "uses_current_date": true,
+    "form": [
+        {
+            "category": "Datos primarios del paciente",
+            "subcategories": [
+                {
+                    "subcategory": "Fecha de nacimiento",
+                    "fields": [{
+                        "field": "dropdown",
+                        "use_date_field": "Año",
+                        "name" : "test_anno",
+                        "title": "Año"
+                    }, {
+                        "field": "dropdown",
+                        "use_date_field": "Mes",
+                        "name" : "test_mes",
+                        "title": "Mes"
+                    }, {
+                        "field": "dropdown",
+                        "use_date_field": "Dia",
+                        "name" : "test_dia",
+                        "title": "Dia"
+                    }]
+                }
+            ]
+        },
+        {
+            "category": "Pruebas",
+            "subcategories": [
+                {
+                    "subcategory": "prueba",
+                    "fields": [{
+                        "field": "input",
+                        "type": "text",
+                        "name": "test",
+                        "title": "Prueba",
+                        "placeholder": "Prueba"
+                    },{
+                        "field": "bool",
+                        "name" : "test2",
+                        "title": "posee Lupus"
+                    },{
+                        "field": "dropdown",
+                        "use_date_field": "No",
+                        "name" : "test3",
+                        "title": "Foo?",
+                        "options": [
+                            {
+                                "value": 0,
+                                "name": "Foo"
+                            },
+                            {
+                                "value": 1,
+                                "name": "Bar"
+                            }
+                        ]
+                    }]
+                }
+            ]
+        }
+    ]
+}

@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { useIsVisible } from "../hooks/useIsVisible";
 import PrimaryButton from "../components/PrimaryButton"
 import TrashButton from "../components/TrashButton";
-import InputText from "../components/InputText";
-import SelectDropdown from "../components/SelectDropdown";
-import BoolButton from '../components/BoolButton';
+import InputText from "../components/old/InputText";
+import SelectDropdown from "../components/old/SelectDropdown";
+import BoolButton from '../components/old/BoolButton';
 import FormContentSeparator from "../components/FormContentSeparator";
 import SubContentSeparator from "../components/SubContentSeparator";
 import { calcular_probabilidad_cancer_gastrico } from "../utils/calculadora_cancer_gastrico";
