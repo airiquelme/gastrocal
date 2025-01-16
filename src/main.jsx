@@ -4,6 +4,7 @@ import {BrowserRouter, Routes, Route} from "react-router"
 import './index.css'
 
 import Header from './components/Header'
+import LogosContainer from './components/LogosContainer'
 import Homepage from './routes/Homepage'
 import Calculator from './routes/Calculator'
 import NotFound from './routes/NotFound'
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/new-calculator" element={<NewCalculator calculator={prueba_calculadora} calculator_function={calcular_adenocarcinoma2} default_values={prueba_defectos} key={1} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <LogosContainer />
     </BrowserRouter>
   </StrictMode>,
 )
