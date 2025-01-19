@@ -10,6 +10,7 @@ import InputText from "../components/new/InputText";
 import BoolButton from "../components/new/BoolButton";
 import SelectDropdown from "../components/new/SelectDropdown";
 import CurrentDateOptions from "../components/new/CurrentDateOptions";
+import MathResult from "../components/new/MathResult";
 
 import { generar_annos, generar_meses, generar_dias } from "../utils/generador_fechas";
 
@@ -98,6 +99,8 @@ function NewCalculator(props){
             case "dropdown":
                 const options = generateDropdownOptions(item);
                 return ( <SelectDropdown name={item.name} title={item.title} options={options} error={error} value={values[item.name]} setValue={handleChange} key={index} /> )
+            case "result":
+                return <MathResult title={item.title} values={values} keys={item.keys} operation={item.operation} key={index} />
             default:
                 break;
         }

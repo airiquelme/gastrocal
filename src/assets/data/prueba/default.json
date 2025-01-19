@@ -7,5 +7,7 @@
     "test3": 0,
     "test_anno": -1,
     "test_mes": -1,
-    "test_dia": -1
+    "test_dia": -1,
+    "pep1": "",
+    "pep2": ""
 }
