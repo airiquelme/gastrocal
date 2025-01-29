@@ -1,3 +1,5 @@
+// NOTA: Esta es la calculadora del **biomarcador 1**
+
 export const calcular_adenocarcinoma2 = (variables) => {
     const coefs = {sexo:1.62601,igg2:-1.782748,igg3:-0.894485,pg1:-0.018593,pg2:0.0602249,pcr:0.0374072,anticp:-0.0190353,hta:1.39052}
     const cutoff = 0.309283

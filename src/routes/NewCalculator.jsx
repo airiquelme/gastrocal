@@ -36,9 +36,9 @@ function NewCalculator(props){
             setMostrarResultadoTexto(resultado.message)
             setError(true)
         }else{
-            const resultado_porcentaje = (resultado * 100).toFixed(2)
+            const resultado_porcentaje = (resultado["prob"] * 100).toFixed(2)
             setMostrarResultadoPorcentaje(resultado_porcentaje + "%")
-            setMostrarResultadoTexto("Agregar resultado aquí")
+            setMostrarResultadoTexto(resultado["info"])
             setError(false)
         }
     }, [resultado])

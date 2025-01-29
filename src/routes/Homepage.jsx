@@ -8,7 +8,13 @@ function Homepage(){
             <CalculatorRouteButton route={"/calculator"} key={1}>
                 Calculadora de riesgo de cáncer gastrico
             </CalculatorRouteButton>
-            <CalculatorRouteButton route={"/404"} key={1}>Acceder a paper</CalculatorRouteButton>
+            <CalculatorRouteButton route={"/calculadora-biomarcador-2"} key={2}>
+                Calculadora de Adenocarcinoma (biomarcador 2)
+            </CalculatorRouteButton>
+            <CalculatorRouteButton route={"/calculadora-modelo-clinico"} key={3}>
+            Calculadora de Adenocarcinoma (modelo clínico)
+            </CalculatorRouteButton>
+            <CalculatorRouteButton route={"/404"} key={4}>Acceder a paper</CalculatorRouteButton>
         </div>
        </main>
     )

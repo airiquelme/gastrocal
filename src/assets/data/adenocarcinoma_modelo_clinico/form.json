@@ -1,0 +1,45 @@
+{
+    "title": "Calculadora de Adenocarcinoma (modelo clínico)",
+    "form": [
+        {
+            "category": "Datos primarios del paciente",
+            "subcategories": [
+                {
+                    "subcategory": "",
+                    "fields": [
+                        {
+                            "field": "dropdown",
+                            "use_date_field": "No",
+                            "name" : "sexo",
+                            "title": "Sexo del paciente",
+                            "options": [
+                                {
+                                    "value": 1,
+                                    "name": "Masculino"
+                                },
+                                {
+                                    "value": 0,
+                                    "name": "Femenino"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }, {
+            "category": "Resultados Médicos",
+            "subcategories": [
+                {
+                    "subcategory": "Hipertensión Arterial",
+                    "fields": [
+                        {
+                            "field": "bool",
+                            "name" : "hta",
+                            "title": "posee Hipertensión Arterial"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
