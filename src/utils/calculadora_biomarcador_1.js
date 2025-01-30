@@ -1,4 +1,4 @@
-export const calculadora_biomarcador_2 = (variables) => {
+export const calculadora_biomarcador_1 = (variables) => {
     if(verificar_variables_presentes(variables)) throw new Error("Parámetro inválido. Verifica si los datos están correctos")
 
     const logit = calcular_logit(variables)
@@ -20,15 +20,13 @@ const verificar_variables_presentes = (variables) => {
 
 const calcular_logit = (variables) => {
     const coefs = {
-        "constante": -1.982525,
-        "sexo": 1.62601,
-        "igg_h_pylori_2_decil": -1.782748,
-        "igg_h_pylori_3_decil": -0.894485,
-        "pep1": -0.018593,
-        "pep2": 0.0602249,
-        "pcr": 0.0374072,
-        "anticp": -0.0190353,
-        "hta": 1.39052
+        "constante": -2.176129,
+        "sexo": 1.854199,
+        "igg_h_pylori_2_decil": -1.169432,
+        "igg_h_pylori_3_decil": -0.8005748,
+        "pep1": -0.0171411,
+        "pep2": 0.0516195,
+        "hta": 1.053133
     }
 
     let logit = 0;
@@ -53,7 +51,7 @@ const calcular_probabilidad = (logit) => {
 }
 
 const obtener_informacion_calculo_probabilidad = (prob) => {
-    if(prob < 0.309283){
+    if(prob < 0.265474){
         return "Bajo riesgo"
     }else{
         return "Alto riesgo"

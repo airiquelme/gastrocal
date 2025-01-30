@@ -8,6 +8,9 @@ function Homepage(){
             <CalculatorRouteButton route={"/calculator"} key={1}>
                 Calculadora de riesgo de cáncer gastrico
             </CalculatorRouteButton>
+            <CalculatorRouteButton route={"/calculadora-biomarcador-1"} key={2}>
+                Calculadora de Adenocarcinoma (biomarcador 1)
+            </CalculatorRouteButton>
             <CalculatorRouteButton route={"/calculadora-biomarcador-2"} key={2}>
                 Calculadora de Adenocarcinoma (biomarcador 2)
             </CalculatorRouteButton>

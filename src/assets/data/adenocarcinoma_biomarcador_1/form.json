@@ -71,28 +71,12 @@
                         }
                     ]
                 }, {
-                    "subcategory": "Mediciones de PCR",
-                    "fields": [
-                        {
-                            "field": "input",
-                            "type": "number",
-                            "name": "pcr",
-                            "title": "PCR",
-                            "placeholder": "PCR"
-                        }
-                    ]
-                }, {
-                    "subcategory": "Condiciones específicas",
+                    "subcategory": "Hipertensión Arterial",
                     "fields": [
                         {
                             "field": "bool",
                             "name" : "hta",
                             "title": "posee Hipertensión Arterial"
-                        },
-                        {
-                            "field": "bool",
-                            "name" : "anticp",
-                            "title": "posee Anti-CP"
                         }
                     ]
                 }
