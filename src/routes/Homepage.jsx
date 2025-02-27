@@ -11,13 +11,14 @@ function Homepage(){
             <CalculatorRouteButton route={"/calculadora-biomarcador-1"} key={2}>
                 Calculadora de Adenocarcinoma (biomarcador 1)
             </CalculatorRouteButton>
-            <CalculatorRouteButton route={"/calculadora-biomarcador-2"} key={2}>
+            <CalculatorRouteButton route={"/calculadora-biomarcador-2"} key={3}>
                 Calculadora de Adenocarcinoma (biomarcador 2)
             </CalculatorRouteButton>
-            <CalculatorRouteButton route={"/calculadora-modelo-clinico"} key={3}>
+            <CalculatorRouteButton route={"/calculadora-modelo-clinico"} key={4}>
             Calculadora de Adenocarcinoma (modelo clínico)
             </CalculatorRouteButton>
-            <CalculatorRouteButton route={"/404"} key={4}>Acceder a paper</CalculatorRouteButton>
+            <CalculatorRouteButton route={"/pdf"} key={5}>Prueba de PDF</CalculatorRouteButton>
+            <CalculatorRouteButton route={"/404"} key={6}>Acceder a paper</CalculatorRouteButton>
         </div>
        </main>
     )

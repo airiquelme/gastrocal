@@ -151,7 +151,8 @@ function NewCalculator(props){
                 </div>
                 <div className="mt-5 p-5 bg-white rounded-md shadow text-center">
                     <p className="text-5xl mb-2 font-bold">
-                        {mostrarResultadoPorcentaje}
+                        {/* {mostrarResultadoPorcentaje} */}
+                        {mostrarResultadoTexto}
                     </p>
                     <p className="text-slate-700" ref={card_resultados}>{mostrarResultadoTexto}</p>
                 </div>
