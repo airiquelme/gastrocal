@@ -18,7 +18,10 @@ function Homepage(){
             Calculadora de Adenocarcinoma (modelo clínico)
             </CalculatorRouteButton>
             <CalculatorRouteButton route={"/pdf"} key={5}>Prueba de PDF</CalculatorRouteButton>
-            <CalculatorRouteButton route={"/404"} key={6}>Acceder a paper</CalculatorRouteButton>
+            <CalculatorRouteButton route={"/calculadora-molina"} key={6}>
+                Calculadora de riesgo de cáncer gastrico (Molina)
+            </CalculatorRouteButton>
+            <CalculatorRouteButton route={"/404"} key={7}>Acceder a paper</CalculatorRouteButton>
         </div>
        </main>
     )

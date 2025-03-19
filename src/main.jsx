@@ -30,6 +30,11 @@ import form_adenocarcinoma_modelo_clinico from "./assets/data/adenocarcinoma_mod
 import default_values_adenocarcinoma_modelo_clinico from "./assets/data/adenocarcinoma_modelo_clinico/default.json"
 import { calculadora_modelo_clinico } from './utils/calculadora_modelo_clinico'
 
+// Calculadora Molina
+import form_molina from "./assets/data/molina/form.json"
+import default_values_molina from "./assets/data/molina/default.json"
+import { calculadora_molina } from './utils/calculadora_molina'
+
 import pdf_test from "./assets/docs/test.pdf"
 
 createRoot(document.getElementById('root')).render(
@@ -44,6 +49,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/calculadora-modelo-clinico" element={<NewCalculator calculator={form_adenocarcinoma_modelo_clinico} calculator_function={calculadora_modelo_clinico} default_values={default_values_adenocarcinoma_modelo_clinico} key={3} />} />
         <Route path="/calculadora-biomarcador-1" element={<NewCalculator calculator={form_adenocarcinoma_biomarcador_1} calculator_function={calculadora_biomarcador_1} default_values={default_values_adenocarcinoma_biomarcador_1} key={4} />} />
         <Route path="/pdf" element={<PDFViewPage title={"Prueba de PDF"} document={pdf_test} key={5} />} />
+        <Route path="calculadora-molina" element={<NewCalculator calculator={form_molina} calculator_function={calculadora_molina} default_values={default_values_molina} key={6} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <LogosContainer />
