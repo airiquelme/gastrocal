@@ -25,9 +25,9 @@ export const calculadora_molina = (variables) => {
     const logit_olga = calcular_logit(variables, coefs_olga)
     const prob_olga = calcular_probabilidad(logit_olga)
 
-    const info = obtener_informacion_calculo_probabilidad(prob_biom, prob_olga)
+    const {priority, info, color} = obtener_informacion_calculo_probabilidad(prob_biom, prob_olga)
 
-    return {prob_biom, info}
+    return {prob_biom, priority, info, color}
 }
 
 const verificar_variables_presentes = (variables) => { 
@@ -62,7 +62,7 @@ const calcular_probabilidad = (logit) => {
     return prob
 }
 
-const obtener_informacion_calculo_probabilidad = (prob_biom, prob_olga) => {
+const obtener_resultados_por_probabilidad = (prob_biom, prob_olga) => {
     let biom = 0
     if(prob_biom < 0.04434){
         biom = 3
@@ -77,17 +77,39 @@ const obtener_informacion_calculo_probabilidad = (prob_biom, prob_olga) => {
     } else {
         olga = 1
     }
+
+    return {biom, olga}
+}
+
+const obtener_informacion_calculo_probabilidad = (prob_biom, prob_olga) => {
+    let priority, info, color
+    const {biom, olga} = obtener_resultados_por_probabilidad(prob_biom, prob_olga)
+
     if (biom == 1 && olga == 1) {
-        return "Prioridad 1"
+        priority = "Prioridad 1"
+        info = "Los datos indican un alto riesgo de cáncer y alto riesgo en premalignidad"
+        color = "text-red-500"
     } else if (biom == 1 && olga == 0) {
-        return "Prioridad 2"
+        priority = "Prioridad 2"
+        info = "Los datos indican un alto riesgo de cáncer y bajo en premalignidad"
+        color = "text-orange-500"
     }else if (biom == 2 && olga == 1) {
-        return "Prioridad 3"
+        priority = "Prioridad 3"
+        info = "Los datos indican un riesgo medio de cáncer y alto en premalignidad"
+        color = "text-amber-500"
     }else if (biom == 2 && olga == 0) {
-        return "Prioridad 4"
+        priority = "Prioridad 4"
+        info = "Los datos indican un riesgo medio de cáncer y bajo en premalignidad"
+        color = "text-yellow-500"
     }else if (biom == 3 && olga == 1) {
-        return "Prioridad 5"
+        priority = "Prioridad 5"
+        info = "Los datos indican un bajo riesgo de cáncer y alto en premalignidad"
+        color = "text-green-500"
     }else if (biom == 3 && olga == 0) {
-        return "Prioridad 6"
+        priority = "Prioridad 6"
+        info = "Los datos indican un bajo riesgo de cáncer y bajo en premalignidad"
+        color = "text-cyan-500"
     }
+
+    return {priority, info, color}
 }

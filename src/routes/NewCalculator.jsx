@@ -20,8 +20,10 @@ function NewCalculator(props){
     const [values, setValues] = useState(default_values)
     const [error, setError] = useState(false)
     const [resultado, setResultado] = useState(null)
-    const [mostrarResultadoPorcentaje, setMostrarResultadoPorcentaje] = useState("N/A")
+    // const [mostrarResultadoPorcentaje, setMostrarResultadoPorcentaje] = useState("N/A")
+    const [mostrarResultadoPrioridad, setMostrarResultadoPrioridad] = useState("Ingresa valores en la calculadora")
     const [mostrarResultadoTexto, setMostrarResultadoTexto] = useState("Ingresa valores en la calculadora")
+    const [resultadoColor, setResultadoColor] = useState("text-black")
     
     const card_resultados = useRef();
     let resultados_en_pantalla = useIsVisible(card_resultados);
@@ -32,13 +34,16 @@ function NewCalculator(props){
         }
 
         if(resultado.constructor === Error){
-            setMostrarResultadoPorcentaje("Error")
+            // setMostrarResultadoPorcentaje("Error")
+            setMostrarResultadoPrioridad(resultado.message)
             setMostrarResultadoTexto(resultado.message)
             setError(true)
         }else{
-            const resultado_porcentaje = (resultado["prob"] * 100).toFixed(2)
-            setMostrarResultadoPorcentaje(resultado_porcentaje + "%")
-            setMostrarResultadoTexto(resultado["info"])
+            // const resultado_porcentaje = (resultado["prob"] * 100).toFixed(2)
+            // setMostrarResultadoPorcentaje(resultado_porcentaje + "%")
+            setMostrarResultadoPrioridad(resultado.priority ? resultado.priority  : resultado.info)
+            setMostrarResultadoTexto(resultado.info)
+            setResultadoColor(resultado.color || "text-black")
             setError(false)
         }
     }, [resultado])
@@ -53,6 +58,8 @@ function NewCalculator(props){
     const handleReset = () => {
         setValues(default_values)
         setMostrarResultadoPorcentaje("N/A")
+        setResultadoColor("text-black")
+        setMostrarResultadoPrioridad("Ingresa valores en la calculadora")
         setMostrarResultadoTexto("Ingresa valores en la calculadora")
     }
 
@@ -150,9 +157,9 @@ function NewCalculator(props){
                     </form>
                 </div>
                 <div className="mt-5 p-5 bg-white rounded-md shadow text-center">
-                    <p className="text-5xl mb-2 font-bold">
+                    <p className={`text-5xl mb-2 font-bold ${resultadoColor}`}>
                         {/* {mostrarResultadoPorcentaje} */}
-                        {mostrarResultadoTexto}
+                        {mostrarResultadoPrioridad}
                     </p>
                     <p className="text-slate-700" ref={card_resultados}>{mostrarResultadoTexto}</p>
                 </div>
