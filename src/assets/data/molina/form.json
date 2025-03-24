@@ -1,0 +1,84 @@
+{
+    "title": "Calculadora de Molina",
+    "form": [
+        {
+            "category": "Datos primarios del paciente",
+            "subcategories": [
+                {
+                    "subcategory": "",
+                    "fields": [
+                        {
+                            "field": "dropdown",
+                            "use_date_field": "No",
+                            "name" : "sexo",
+                            "title": "Sexo del paciente",
+                            "options": [
+                                {
+                                    "value": 1,
+                                    "name": "Masculino"
+                                },
+                                {
+                                    "value": 0,
+                                    "name": "Femenino"
+                                }
+                            ]
+                        },
+                        {
+                            "field": "input",
+                            "type": "number",
+                            "name": "edad",
+                            "title": "Edad en años",
+                            "placeholder": 0
+                        }
+                    ]
+                }
+            ]
+        }, {
+            "category": "Resultados Médicos",
+            "subcategories": [
+                {
+                    "subcategory": "Inmunoglobina G",
+                    "fields": [
+                        {
+                            "field": "bool",
+                            "name": "igg_h_pylori",
+                            "title": "tiene IgG H. pylori Positivo"
+                        }
+                    ]
+                }, {
+                    "subcategory": "Mediciones de Pepsinogeno",
+                    "fields": [
+                        {
+                            "field": "input",
+                            "type": "number",
+                            "name": "pep1",
+                            "title": "Pepsinogeno I",
+                            "placeholder": "Pepsinogeno I"
+                        },{
+                            "field": "input",
+                            "type": "number",
+                            "name": "pep2",
+                            "title": "Pepsinogeno II",
+                            "placeholder": "Pepsinogeno II"
+                        },
+                        {
+                            "field": "result",
+                            "title": "Ratio Pepsinogeno I/II",
+                            "keys": ["pep1", "pep2"],
+                            "operation": "division"
+                        }
+                    ]
+                }, {
+                    "subcategory": "Condiciones específicas",
+                    "fields": [
+                        {
+                            "field": "bool",
+                            "name" : "hta",
+                            "title": "posee Hipertensión Arterial"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

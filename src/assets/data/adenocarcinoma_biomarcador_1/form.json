@@ -1,0 +1,86 @@
+{
+    "title": "Calculadora de adenocarcinoma (biomarcador 2)",
+    "form": [
+        {
+            "category": "Datos primarios del paciente",
+            "subcategories": [
+                {
+                    "subcategory": "",
+                    "fields": [
+                        {
+                            "field": "dropdown",
+                            "use_date_field": "No",
+                            "name" : "sexo",
+                            "title": "Sexo del paciente",
+                            "options": [
+                                {
+                                    "value": 1,
+                                    "name": "Masculino"
+                                },
+                                {
+                                    "value": 0,
+                                    "name": "Femenino"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }, {
+            "category": "Resultados Médicos",
+            "subcategories": [
+                {
+                    "subcategory": "Inmunoglobina G",
+                    "fields": [
+                        {
+                            "field": "input",
+                            "type": "number",
+                            "name": "igg_h_pylori_2_decil",
+                            "title": "IgG H. pylori (2 tercil)",
+                            "placeholder": "IgG H. pylori (2 tercil)"
+                        },
+                        {
+                            "field": "input",
+                            "type": "number",
+                            "name": "igg_h_pylori_3_decil",
+                            "title": "IgG H. pylori (3 tercil)",
+                            "placeholder": "IgG H. pylori (3 tercil)"
+                        }
+                    ]
+                }, {
+                    "subcategory": "Mediciones de Pepsinogeno",
+                    "fields": [
+                        {
+                            "field": "input",
+                            "type": "number",
+                            "name": "pep1",
+                            "title": "Pepsinogeno I",
+                            "placeholder": "Pepsinogeno I"
+                        },{
+                            "field": "input",
+                            "type": "number",
+                            "name": "pep2",
+                            "title": "Pepsinogeno II",
+                            "placeholder": "Pepsinogeno II"
+                        },
+                        {
+                            "field": "result",
+                            "title": "Ratio Pepsinogeno I/II",
+                            "keys": ["pep1", "pep2"],
+                            "operation": "division"
+                        }
+                    ]
+                }, {
+                    "subcategory": "Hipertensión Arterial",
+                    "fields": [
+                        {
+                            "field": "bool",
+                            "name" : "hta",
+                            "title": "posee Hipertensión Arterial"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
