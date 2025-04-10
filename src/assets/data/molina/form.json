@@ -52,13 +52,13 @@
                             "field": "input",
                             "type": "number",
                             "name": "pep1",
-                            "title": "Pepsinogeno I",
+                            "title": "Pepsinogeno I (ug/L)",
                             "placeholder": "Pepsinogeno I"
                         },{
                             "field": "input",
                             "type": "number",
                             "name": "pep2",
-                            "title": "Pepsinogeno II",
+                            "title": "Pepsinogeno II (ug/L)",
                             "placeholder": "Pepsinogeno II"
                         },
                         {
