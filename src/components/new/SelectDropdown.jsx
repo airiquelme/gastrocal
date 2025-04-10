@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function SelectDropdown({name, title, error, options, value, setValue}){
+function SelectDropdown({name, title, error, options, value, setValue, disabled}){
     const handleChange = (e) => {
         setValue(name, e.target.value)
         if(errorHere) setErrorHere(false)
@@ -27,7 +27,7 @@ function SelectDropdown({name, title, error, options, value, setValue}){
                 onChange={handleChange}
                 className={`block w-full p-2 border-2 ${bg_color} ${text_color} ${text_italic} rounded-md`}
             >
-                {options.map((option, index) => ( <option value={option.value} key={index}>{option.name}</option> ))}
+                {options.map((option, index) => ( <option value={option.value} disabled={option.disabled} key={index}>{option.name}</option> ))}
             </select>
         </div>
     )

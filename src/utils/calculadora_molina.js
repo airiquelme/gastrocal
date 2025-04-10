@@ -32,7 +32,7 @@ export const calculadora_molina = (variables) => {
 
 const verificar_variables_presentes = (variables) => { 
     for(let item in variables){
-        if(variables[item] === -1 || variables[item] === ""){
+        if(variables[item] == -1 || variables[item] == ""){
             return true
         }
     };
