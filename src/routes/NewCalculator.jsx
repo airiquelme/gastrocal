@@ -100,7 +100,7 @@ function NewCalculator(props){
     const generateField = (item, index) => {
         switch (item.field) {
             case "input":
-                return (<InputText name={item.name} title={item.title} type={item.type} error={error} value={values[item.name]} setValue={handleChange} key={index} />)
+                return (<InputText name={item.name} title={item.title} type={item.type} placeholder={item.placeholder} error={error} value={values[item.name]} setValue={handleChange} key={index} />)
             case "bool":
                 return ( <BoolButton name={item.name} title={item.title} value={values[item.name]} setValue={handleChange} key={index}  /> )
             case "dropdown":

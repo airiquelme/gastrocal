@@ -14,6 +14,11 @@
                             "title": "Sexo del paciente",
                             "options": [
                                 {
+                                    "value": -1,
+                                    "name": "Seleccione sexo del paciente",
+                                    "disabled": true
+                                },
+                                {
                                     "value": 1,
                                     "name": "Masculino"
                                 },
@@ -22,13 +27,27 @@
                                     "name": "Femenino"
                                 }
                             ]
-                        },
+                        }
+                    ]
+                },
+                {
+                    "subcategory": "Fecha de nacimiento",
+                    "fields": [
                         {
-                            "field": "input",
-                            "type": "number",
-                            "name": "edad",
-                            "title": "Edad en años",
-                            "placeholder": 0
+                            "field": "dropdown",
+                            "use_date_field": "Año",
+                            "name" : "anno",
+                            "title": "Año"
+                        }, {
+                            "field": "dropdown",
+                            "use_date_field": "Mes",
+                            "name" : "mes",
+                            "title": "Mes"
+                        }, {
+                            "field": "dropdown",
+                            "use_date_field": "Dia",
+                            "name" : "dia",
+                            "title": "Día"
                         }
                     ]
                 }
@@ -40,9 +59,11 @@
                     "subcategory": "Inmunoglobina G",
                     "fields": [
                         {
-                            "field": "bool",
+                            "field": "input",
+                            "type": "number",
                             "name": "igg_h_pylori",
-                            "title": "tiene IgG H. pylori Positivo"
+                            "title": "IgG H. Pylori (UR/ml)",
+                            "placeholder": "IgG H. Pylori"
                         }
                     ]
                 }, {
@@ -69,12 +90,39 @@
                         }
                     ]
                 }, {
+                    "subcategory": "Mediciones Hormonales",
+                    "fields": [
+                        {
+                            "field": "input",
+                            "type": "number",
+                            "name": "gastrina",
+                            "title": "Gastrina-17b (pmol/L)",
+                            "placeholder": "Gastrina-17b"
+                        }
+                    ]
+                }, {
                     "subcategory": "Condiciones específicas",
                     "fields": [
                         {
-                            "field": "bool",
+                            "field": "dropdown",
+                            "use_date_field": "No",
                             "name" : "hta",
-                            "title": "posee Hipertensión Arterial"
+                            "title": "Hipertensión Arterial",
+                            "options": [
+                                {
+                                    "value": -1,
+                                    "name": "¿Paciente posee Hipertensión Arterial?",
+                                    "disabled": true
+                                },
+                                {
+                                    "value": 1,
+                                    "name": "Sí, el paciente posee Hipertensión Arterial"
+                                },
+                                {
+                                    "value": 0,
+                                    "name": "No, el paciente no posee Hipertensión Arterial"
+                                }
+                            ]
                         }
                     ]
                 }
