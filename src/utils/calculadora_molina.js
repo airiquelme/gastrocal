@@ -4,7 +4,7 @@ export const calculadora_molina = (variables) => {
     let coefs_biom = {
         "constante": -3.223523,
         "sexo": 1.728493,
-        "edad": 0.0145009,
+        "anno": 0.0145009,
         "igg_h_pylori": -0.4923541,
         "pep1": -0.0165863,
         "pep2": 0.049396,
@@ -16,7 +16,7 @@ export const calculadora_molina = (variables) => {
     let coefs_olga = {
         "constante": -2.98717,
         "sexo": -0.4485155,
-        "edad": 0.0372106,
+        "anno": 0.0372106,
         "igg_h_pylori": -0.1581263,
         "pep1": -0.0045152,
         "pep2": 0.0040796,
@@ -45,9 +45,19 @@ const calcular_logit = (variables, coefs) => {
     logit = logit + coefs["constante"]
 
     for (const [key, value] of Object.entries(coefs)) {
+        let factor_value = variables[key]
         if(key == "constante") continue;
+        else if(key == "igg_h_pylori") {
+            if(variables[key] < 14) {factor_value = 0} else {factor_value = 1}
+        } else if(key == "anno") {
+            let birthday = new Date()
+            birthday.setDate(variables["dia"])
+            birthday.setMonth(variables["mes"])
+            birthday.setFullYear(variables["anno"])
+            factor_value = (Date.now() - birthday)/(1000*60*60*24*365.25)
+        }
 
-        logit = logit + value * variables[key]
+        logit = logit + value * factor_value
         // console.log(`[${key}, ${value}] - ${key} (${value}) * ${variables[key]} : ${value * variables[key]} \n  Logit: ${logit}`)
     }
 
@@ -87,27 +97,27 @@ const obtener_informacion_calculo_probabilidad = (prob_biom, prob_olga) => {
 
     if (biom == 1 && olga == 1) {
         priority = "Prioridad 1"
-        info = "Los datos indican un alto riesgo de cáncer y alto riesgo en premalignidad"
+        info = "Los datos indican un alto riesgo de cáncer y un riesgo de premalignidad"
         color = "text-red-500"
     } else if (biom == 1 && olga == 0) {
         priority = "Prioridad 2"
-        info = "Los datos indican un alto riesgo de cáncer y bajo en premalignidad"
+        info = "Los datos indican un alto riesgo de cáncer y un bajo riesgo de premalignidad"
         color = "text-orange-500"
     }else if (biom == 2 && olga == 1) {
         priority = "Prioridad 3"
-        info = "Los datos indican un riesgo medio de cáncer y alto en premalignidad"
+        info = "Los datos indican un riesgo medio de cáncer y un riesgo de premalignidad"
         color = "text-amber-500"
     }else if (biom == 2 && olga == 0) {
         priority = "Prioridad 4"
-        info = "Los datos indican un riesgo medio de cáncer y bajo en premalignidad"
+        info = "Los datos indican un riesgo medio de cáncer y un bajo riesgo de premalignidad"
         color = "text-yellow-500"
     }else if (biom == 3 && olga == 1) {
         priority = "Prioridad 5"
-        info = "Los datos indican un bajo riesgo de cáncer y alto en premalignidad"
+        info = "Los datos indican un bajo riesgo de cáncer y un riesgo de premalignidad"
         color = "text-green-500"
     }else if (biom == 3 && olga == 0) {
         priority = "Prioridad 6"
-        info = "Los datos indican un bajo riesgo de cáncer y bajo en premalignidad"
+        info = "Los datos indican un bajo riesgo de cáncer y un bajo riesgo de premalignidad"
         color = "text-cyan-500"
     }
 
