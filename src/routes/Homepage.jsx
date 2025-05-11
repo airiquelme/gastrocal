@@ -30,8 +30,8 @@ function Homepage(){
             subtitle="Mide la categoría de prioridad de un paciente para la realización de una endoscopía, calculando el nivel de riesgo de cáncer gástrico y premalignidad."
             icon={calculator_icon}
         >
-            <CalculatorRouteButton route={"/calculadora-molina"} key={6}>
-                Calculadora de riesgo de cáncer gastrico (Molina)
+            <CalculatorRouteButton route={"/calculadora-cancer-gastrico"} key={6}>
+                Calculadora de Riesgo de Cáncer Gástrico y Premalignidad
             </CalculatorRouteButton>
         </HomepageSection>
        </main>
