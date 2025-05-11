@@ -1,0 +1,132 @@
+{
+    "title": "Calculadora de Riesgo de Cáncer Gástrico y Premalignidad",
+    "form": [
+        {
+            "category": "Datos primarios del paciente",
+            "subcategories": [
+                {
+                    "subcategory": "",
+                    "fields": [
+                        {
+                            "field": "dropdown",
+                            "use_date_field": "No",
+                            "name" : "sexo",
+                            "title": "Sexo del paciente",
+                            "options": [
+                                {
+                                    "value": -1,
+                                    "name": "Seleccione sexo del paciente",
+                                    "disabled": true
+                                },
+                                {
+                                    "value": 1,
+                                    "name": "Masculino"
+                                },
+                                {
+                                    "value": 0,
+                                    "name": "Femenino"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "subcategory": "Fecha de nacimiento",
+                    "fields": [
+                        {
+                            "field": "dropdown",
+                            "use_date_field": "Año",
+                            "name" : "anno",
+                            "title": "Año"
+                        }, {
+                            "field": "dropdown",
+                            "use_date_field": "Mes",
+                            "name" : "mes",
+                            "title": "Mes"
+                        }, {
+                            "field": "dropdown",
+                            "use_date_field": "Dia",
+                            "name" : "dia",
+                            "title": "Día"
+                        }
+                    ]
+                }
+            ]
+        }, {
+            "category": "Resultados Médicos",
+            "subcategories": [
+                {
+                    "subcategory": "Inmunoglobina G",
+                    "fields": [
+                        {
+                            "field": "input",
+                            "type": "number",
+                            "name": "igg_h_pylori",
+                            "title": "IgG H. Pylori (UR/ml)",
+                            "placeholder": "IgG H. Pylori"
+                        }
+                    ]
+                }, {
+                    "subcategory": "Mediciones de Pepsinogeno",
+                    "fields": [
+                        {
+                            "field": "input",
+                            "type": "number",
+                            "name": "pep1",
+                            "title": "Pepsinogeno I (ug/L)",
+                            "placeholder": "Pepsinogeno I"
+                        },{
+                            "field": "input",
+                            "type": "number",
+                            "name": "pep2",
+                            "title": "Pepsinogeno II (ug/L)",
+                            "placeholder": "Pepsinogeno II"
+                        },
+                        {
+                            "field": "result",
+                            "title": "Ratio Pepsinogeno I/II",
+                            "keys": ["pep1", "pep2"],
+                            "operation": "division"
+                        }
+                    ]
+                }, {
+                    "subcategory": "Mediciones Hormonales",
+                    "fields": [
+                        {
+                            "field": "input",
+                            "type": "number",
+                            "name": "gastrina",
+                            "title": "Gastrina-17b (pmol/L)",
+                            "placeholder": "Gastrina-17b"
+                        }
+                    ]
+                }, {
+                    "subcategory": "Condiciones específicas",
+                    "fields": [
+                        {
+                            "field": "dropdown",
+                            "use_date_field": "No",
+                            "name" : "hta",
+                            "title": "Hipertensión Arterial",
+                            "options": [
+                                {
+                                    "value": -1,
+                                    "name": "¿Paciente posee Hipertensión Arterial?",
+                                    "disabled": true
+                                },
+                                {
+                                    "value": 1,
+                                    "name": "Sí, el paciente posee Hipertensión Arterial"
+                                },
+                                {
+                                    "value": 0,
+                                    "name": "No, el paciente no posee Hipertensión Arterial"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
