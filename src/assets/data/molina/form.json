@@ -1,5 +1,5 @@
 {
-    "title": "Calculadora de Molina",
+    "title": "Calculadora de Riesgo de Cáncer Gástrico y Premalignidad",
     "form": [
         {
             "category": "Datos primarios del paciente",
@@ -27,13 +27,27 @@
                                     "name": "Femenino"
                                 }
                             ]
-                        },
+                        }
+                    ]
+                },
+                {
+                    "subcategory": "Fecha de nacimiento",
+                    "fields": [
                         {
-                            "field": "input",
-                            "type": "number",
-                            "name": "edad",
-                            "title": "Edad en años",
-                            "placeholder": 0
+                            "field": "dropdown",
+                            "use_date_field": "Año",
+                            "name" : "anno",
+                            "title": "Año"
+                        }, {
+                            "field": "dropdown",
+                            "use_date_field": "Mes",
+                            "name" : "mes",
+                            "title": "Mes"
+                        }, {
+                            "field": "dropdown",
+                            "use_date_field": "Dia",
+                            "name" : "dia",
+                            "title": "Día"
                         }
                     ]
                 }
@@ -73,6 +87,17 @@
                             "title": "Ratio Pepsinogeno I/II",
                             "keys": ["pep1", "pep2"],
                             "operation": "division"
+                        }
+                    ]
+                }, {
+                    "subcategory": "Mediciones Hormonales",
+                    "fields": [
+                        {
+                            "field": "input",
+                            "type": "number",
+                            "name": "gastrina",
+                            "title": "Gastrina-17b (pmol/L)",
+                            "placeholder": "Gastrina-17b"
                         }
                     ]
                 }, {
