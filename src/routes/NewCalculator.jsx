@@ -23,7 +23,7 @@ function NewCalculator(props){
     // const [mostrarResultadoPorcentaje, setMostrarResultadoPorcentaje] = useState("N/A")
     const [mostrarResultadoPrioridad, setMostrarResultadoPrioridad] = useState("Ingresa valores en la calculadora")
     const [mostrarResultadoTexto, setMostrarResultadoTexto] = useState("Ingresa valores en la calculadora")
-    const [resultadoColor, setResultadoColor] = useState("text-black")
+    const [resultadoColor, setResultadoColor] = useState("bg-white")
     
     const card_resultados = useRef();
     let resultados_en_pantalla = useIsVisible(card_resultados);
@@ -43,7 +43,7 @@ function NewCalculator(props){
             // setMostrarResultadoPorcentaje(resultado_porcentaje + "%")
             setMostrarResultadoPrioridad(resultado.priority ? resultado.priority  : resultado.info)
             setMostrarResultadoTexto(resultado.info)
-            setResultadoColor(resultado.color || "text-black")
+            setResultadoColor(resultado.color || "bg-white")
             setError(false)
         }
     }, [resultado])
@@ -156,8 +156,8 @@ function NewCalculator(props){
                         <PrimaryButton action={handleSubmit}>Calcular</PrimaryButton>
                     </form>
                 </div>
-                <div className="mt-5 p-5 bg-white rounded-md shadow text-center">
-                    <p className={`text-5xl mb-2 font-bold ${resultadoColor}`}>
+                <div className={`mt-5 p-5 bg-white rounded-md shadow text-center ${resultadoColor}`}>
+                    <p className="text-5xl mb-2 font-bold">
                         {/* {mostrarResultadoPorcentaje} */}
                         {mostrarResultadoPrioridad}
                     </p>
