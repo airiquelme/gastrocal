@@ -1,24 +1,3 @@
-1. Meter los logos en la página
-    (se muestren siempre en una barra? O en un costado? Arriba, o abajo?)
+-Cambio prioridades a semáforo
 
-2. Hacer nuevas calculadoras.
-3. Agregar componente de Ratio Pepsinogeno I/II a nueva calculadora
-
-
-
-Grupo riesgo de cáncer gástrico: 1 2 3
-
-olga234 SI / NO
-
-Prioridad de Acceso endoscópico
-1 SI : Muy Alta (Prioridad 1)
-1 NO : Alta (Prioridad 2)
-2 SI : Media Alta (Prioridad 3)
-2 NO : Media Baja (Prioridad 4)
-3 SI : Baja (Prioridad 5)
-3 NO : Muy Baja (Prioridad 6)
-
-Recomendación:
-Prioridad
-    Riesgo de cáncer gástrico (Grupo)
-        Risego de condiciones pre malignas gástricas (Olga234)
+-Navegador para pdfs con los documentos y posters
