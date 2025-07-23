@@ -2,6 +2,7 @@ import CalculatorRouteButton from "../components/CalculatorRouteButton";
 import HomepageSection from "../components/HomepageSection";
 
 import calculator_icon from "../assets/images/calculator.svg"
+import pdf_icon from "../assets/images/docs/example.png"
 
 function Homepage(){
     return (
@@ -30,8 +31,18 @@ function Homepage(){
             subtitle="Mide la categoría de prioridad de un paciente para la realización de una endoscopía, calculando el nivel de riesgo de cáncer gástrico y premalignidad."
             icon={calculator_icon}
         >
-            <CalculatorRouteButton route={"/calculadora-cancer-gastrico"} key={6}>
+            <CalculatorRouteButton route={"/calculadora-cancer-gastrico"} key={1}>
                 Calculadora de Riesgo de Cáncer Gástrico y Premalignidad
+            </CalculatorRouteButton>
+        </HomepageSection>
+
+        <HomepageSection
+            title="Papers"
+            subtitle="Revisa la documentación científica del modelo utilizado para calcular riesgos."
+            icon={pdf_icon}
+        >
+            <CalculatorRouteButton route={"/pdf"} key={1}>
+                Documento de prueba
             </CalculatorRouteButton>
         </HomepageSection>
        </main>

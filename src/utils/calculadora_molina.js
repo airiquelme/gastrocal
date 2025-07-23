@@ -98,27 +98,31 @@ const obtener_informacion_calculo_probabilidad = (prob_biom, prob_olga) => {
     if (biom == 1 && olga == 1) {
         priority = "Prioridad 1:\nAlto riesgo de cáncer gástrico y condiciones premalignas gástricas"
         info = "Los datos indican un alto riesgo de cáncer y un riesgo de premalignidad"
-        color = "text-red-500"
+        color = "bg-red-400 text-white"
     } else if (biom == 1 && olga == 0) {
         priority = "Prioridad 2:\nAlto riesgo de cáncer gástrico y condiciones premalignas gástricas"
         info = "Los datos indican un alto riesgo de cáncer y un bajo riesgo de premalignidad"
-        color = "text-red-500"
+        color = "bg-red-400 text-white"
     }else if (biom == 2 && olga == 1) {
         priority = "Prioridad 3:\nRiesgo intermedio de cáncer gástrico y condiciones premalignas gástricas"
         info = "Los datos indican un riesgo medio de cáncer y un riesgo de premalignidad"
-        color = "text-yellow-500"
+        color = "bg-yellow-400"
     }else if (biom == 2 && olga == 0) {
         priority = "Prioridad 4:\nRiesgo intermedio de cáncer gástrico y condiciones premalignas gástricas"
         info = "Los datos indican un riesgo medio de cáncer y un bajo riesgo de premalignidad"
-        color = "text-yellow-500"
+        color = "bg-yellow-400"
     }else if (biom == 3 && olga == 1) {
         priority = "Prioridad 5:\nBajo riesgo de cáncer gástrico y condiciones premalignas gástricas"
         info = "Los datos indican un bajo riesgo de cáncer y un riesgo de premalignidad"
-        color = "text-green-500"
+        color = "bg-green-400"
     }else if (biom == 3 && olga == 0) {
         priority = "Prioridad 6:\nBajo riesgo de cáncer gástrico y condiciones premalignas gástricas"
         info = "Los datos indican un bajo riesgo de cáncer y un bajo riesgo de premalignidad"
-        color = "text-green-500"
+        color = "bg-green-400"
+    }else{
+        priority = "Error al calcular riesgo"
+        info = ""
+        color = "bg-black text-white"
     }
 
     return {priority, info, color}
