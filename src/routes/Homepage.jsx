@@ -2,7 +2,7 @@ import CalculatorRouteButton from "../components/CalculatorRouteButton";
 import HomepageSection from "../components/HomepageSection";
 
 import calculator_icon from "../assets/images/calculator.svg"
-import pdf_icon from "../assets/images/docs/example.png"
+import pdf_icon from "../assets/images/bluepdf.svg"
 
 function Homepage(){
     return (
@@ -37,12 +37,12 @@ function Homepage(){
         </HomepageSection>
 
         <HomepageSection
-            title="Papers"
+            title="Posters"
             subtitle="Revisa la documentación científica del modelo utilizado para calcular riesgos."
             icon={pdf_icon}
         >
             <CalculatorRouteButton route={"/pdf"} key={1}>
-                Documento de prueba
+                Posters Clasificación EDA Protocolo Talca
             </CalculatorRouteButton>
         </HomepageSection>
        </main>
