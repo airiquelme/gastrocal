@@ -58,7 +58,7 @@ function NewCalculator(props){
     const handleReset = () => {
         setValues(default_values)
         setMostrarResultadoPorcentaje("N/A")
-        setResultadoColor("text-black")
+        setResultadoColor("bg-white text-black")
         setMostrarResultadoPrioridad("Ingresa valores en la calculadora")
         setMostrarResultadoTexto("Ingresa valores en la calculadora")
     }
@@ -156,12 +156,12 @@ function NewCalculator(props){
                         <PrimaryButton action={handleSubmit}>Calcular</PrimaryButton>
                     </form>
                 </div>
-                <div className={`mt-5 p-5 bg-white rounded-md shadow text-center ${resultadoColor}`}>
-                    <p className="text-5xl mb-2 font-bold">
+                <div className={`mt-5 p-5 rounded-md shadow text-center ${resultadoColor}`}>
+                    <p className={`text-5xl mb-2 font-bold`}>
                         {/* {mostrarResultadoPorcentaje} */}
                         {mostrarResultadoPrioridad}
                     </p>
-                    <p className="text-slate-700" ref={card_resultados}>{mostrarResultadoTexto}</p>
+                    <p className={`text-slate-700 ${resultadoColor}`} ref={card_resultados}>{mostrarResultadoTexto}</p>
                 </div>
             </div>
         </main>
