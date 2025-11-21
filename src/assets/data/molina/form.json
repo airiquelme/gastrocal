@@ -62,7 +62,7 @@
                             "field": "input",
                             "type": "number",
                             "name": "igg_h_pylori",
-                            "title": "IgG H. Pylori (UR/ml)",
+                            "title": "IgG H. pylori (UR/ml)",
                             "placeholder": "IgG H. Pylori"
                         }
                     ]

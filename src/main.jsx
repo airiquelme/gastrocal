@@ -6,29 +6,29 @@ import './index.css'
 import Header from './components/Header'
 import LogosContainer from './components/LogosContainer'
 import Homepage from './routes/Homepage'
-import Calculator from './routes/Calculator'
+// import Calculator from './routes/Calculator'
 import NotFound from './routes/NotFound'
 import PDFViewPage from './routes/PDFViewPage'
 
-import prueba_calculadora from "./assets/data/prueba/form.json"
-import prueba_defectos from "./assets/data/prueba/default.json"
-import { calcular_adenocarcinoma2 } from './utils/calculadora_adenocarcinoma2'
+// import prueba_calculadora from "./assets/data/prueba/form.json"
+// import prueba_defectos from "./assets/data/prueba/default.json"
+// import { calcular_adenocarcinoma2 } from './utils/calculadora_adenocarcinoma2'
 import NewCalculator from './routes/NewCalculator'
 
 // Calculadora Adenocarcinoma (biomarcador 2)
-import form_adenocarcinoma_biomarcador_1 from "./assets/data/adenocarcinoma_biomarcador_1/form.json"
-import default_values_adenocarcinoma_biomarcador_1 from "./assets/data/adenocarcinoma_biomarcador_1/default.json"
-import { calculadora_biomarcador_1 } from './utils/calculadora_biomarcador_1'
+// import form_adenocarcinoma_biomarcador_1 from "./assets/data/adenocarcinoma_biomarcador_1/form.json"
+// import default_values_adenocarcinoma_biomarcador_1 from "./assets/data/adenocarcinoma_biomarcador_1/default.json"
+// import { calculadora_biomarcador_1 } from './utils/calculadora_biomarcador_1'
 
 // Calculadora Adenocarcinoma (biomarcador 2)
-import form_adenocarcinoma_biomarcador_2 from "./assets/data/adenocarcinoma_biomarcador_2/form.json"
-import default_values_adenocarcinoma_biomarcador_2 from "./assets/data/adenocarcinoma_biomarcador_2/default.json"
-import { calculadora_biomarcador_2 } from './utils/calculadora_biomarcador_2'
+// import form_adenocarcinoma_biomarcador_2 from "./assets/data/adenocarcinoma_biomarcador_2/form.json"
+// import default_values_adenocarcinoma_biomarcador_2 from "./assets/data/adenocarcinoma_biomarcador_2/default.json"
+// import { calculadora_biomarcador_2 } from './utils/calculadora_biomarcador_2'
 
 // Calculadora Adenocarcinoma (modelo clínico)
-import form_adenocarcinoma_modelo_clinico from "./assets/data/adenocarcinoma_modelo_clinico/form.json"
-import default_values_adenocarcinoma_modelo_clinico from "./assets/data/adenocarcinoma_modelo_clinico/default.json"
-import { calculadora_modelo_clinico } from './utils/calculadora_modelo_clinico'
+// import form_adenocarcinoma_modelo_clinico from "./assets/data/adenocarcinoma_modelo_clinico/form.json"
+// import default_values_adenocarcinoma_modelo_clinico from "./assets/data/adenocarcinoma_modelo_clinico/default.json"
+// import { calculadora_modelo_clinico } from './utils/calculadora_modelo_clinico'
 
 // Calculadora Molina
 import form_molina from "./assets/data/molina/form.json"
@@ -36,9 +36,10 @@ import default_values_molina from "./assets/data/molina/default.json"
 import { calculadora_molina } from './utils/calculadora_molina'
 
 import pdf_test from "./assets/docs/POSTERS CLASIFICACION EDA PROTOCOLO TALCA.pdf"
+import Posters from './routes/Posters'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <BrowserRouter>
       <Header />
       <Routes>
@@ -51,9 +52,10 @@ createRoot(document.getElementById('root')).render(
         */}
         <Route path="/pdf" element={<PDFViewPage title={"Posters Clasificación EDA Protocolo Talca"} document={pdf_test} key={5} />} />
         <Route path="/calculadora-cancer-gastrico" element={<NewCalculator calculator={form_molina} calculator_function={calculadora_molina} default_values={default_values_molina} key={6} />} />
+        <Route path="/posters" element={<Posters />} / >
         <Route path="*" element={<NotFound />} />
       </Routes>
       <LogosContainer />
-    </BrowserRouter>
-  </StrictMode>,
+    </BrowserRouter>,
+  {/* </StrictMode>, */}
 )
