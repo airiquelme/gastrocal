@@ -6,51 +6,51 @@
             {
                 "id": "ABYagi",
                 "title": "AB Yagi",
-                "img": "/public/posters/images/ABYagi-Thumbnail.png",
-                "uri": "/public/posters/docs/ABYagi.pdf"
+                "img": "ABYagi-Thumbnail.png",
+                "uri": "ABYagi.pdf"
             },
             {
                 "id": "KimuraTakemoto",
                 "title": "Kimura Takemoto",
-                "img": "/public/posters/images/KimuraTakemoto-Thumbnail.png",
-                "uri": "/public/posters/docs/KimuraTakemoto.pdf"
+                "img": "KimuraTakemoto-Thumbnail.png",
+                "uri": "KimuraTakemoto.pdf"
             },
             {
                 "id": "Kyoto",
                 "title": "Kyoto",
-                "img": "/public/posters/images/Kyoto-Thumbnail.png",
-                "uri": "/public/posters/docs/Kyoto.pdf"
+                "img": "Kyoto-Thumbnail.png",
+                "uri": "Kyoto.pdf"
             },
             
             {
                 "id": "LinkedColorImaging",
                 "title": "EGGIM Linked Color Imaging",
-                "img": "/public/posters/images/LinkedColorImaging-Thumbnail.png",
-                "uri": "/public/posters/docs/LinkedColorImaging.pdf"
+                "img": "LinkedColorImaging-Thumbnail.png",
+                "uri": "LinkedColorImaging.pdf"
             },
             {
                 "id": "NarrowBandImaging",
                 "title": "EGGIM Narrow Band Imaging",
-                "img": "/public/posters/images/NarrowBandImaging-Thumbnail.png",
-                "uri": "/public/posters/docs/NarrowBandImaging.pdf"
+                "img": "NarrowBandImaging-Thumbnail.png",
+                "uri": "NarrowBandImaging.pdf"
             },
             {
                 "id": "MesdaG",
                 "title": "MESDA-G",
-                "img": "/public/posters/images/MesdaG-Thumbnail.png",
-                "uri": "/public/posters/docs/MesdaG.pdf"
+                "img": "MesdaG-Thumbnail.png",
+                "uri": "MesdaG.pdf"
             },
             {
                 "id": "Paris",
                 "title": "Paris",
-                "img": "/public/posters/images/Paris-Thumbnail.png",
-                "uri": "/public/posters/docs/Paris.pdf"
+                "img": "Paris-Thumbnail.png",
+                "uri": "Paris.pdf"
             },
             {
                 "id": "TUGCS",
                 "title": "TUGCS - Limpieza Gástrica",
-                "img": "/public/posters/images/TUGCS-Thumbnail.png",
-                "uri": "/public/posters/docs/TUGCS.pdf"
+                "img": "TUGCS-Thumbnail.png",
+                "uri": "TUGCS.pdf"
             }
         ]
     }

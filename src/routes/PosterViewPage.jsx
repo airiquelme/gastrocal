@@ -3,21 +3,41 @@ import PrimaryButton from "../components/PrimaryButton";
 import { useParams } from "react-router";
 import postersInfo from "../assets/data/posters/posters_info.json"
 
+const posterPDFs = import.meta.glob('../assets/docs/*.pdf', { eager: true });
+
 function PosterViewPage(){
     const { posterId } = useParams();
 
     const [title, setTitle] = useState("")
+    const [posterURL, setPosterURL] = useState("")
     const [document, setDocument] = useState("")
+
 
     useEffect(() => {
         const posters = postersInfo[0].posters
         const thisPoster = posters.find(poster => poster.id == posterId)
-
+            
         if(thisPoster){
             setTitle(thisPoster.title)
-            setDocument(thisPoster.uri)
+            setPosterURL(thisPoster.uri)
         }
     }, [posterId])
+
+    useEffect(() => {
+        const loadPoster = async () => {
+            const posterPath = `../assets/docs/${posterURL}`;
+            console.log(posterPDFs)
+            console.log(posterPath)
+    
+            if(posterPDFs[posterPath]){
+                const poster_url = await posterPDFs[posterPath];
+                console.log(poster_url)
+                setDocument(poster_url.default);
+            }
+        }
+
+        loadPoster();
+    }, [posterURL])
 
     const openDocumentInOtherTab = () => {
         window.open(document, "_blank").focus()

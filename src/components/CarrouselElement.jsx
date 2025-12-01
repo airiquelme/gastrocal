@@ -1,9 +1,26 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import CalculatorRouteButton from "./CalculatorRouteButton";
 
+const posterImages = import.meta.glob('../assets/images/docs/*.{svg,png,jpg}');
+
 function CarrouselElement(props){
-    const {highlighted, index, setHighlighted, categoryId, setCarrouselScroll, image, title, id} = props;
+    const {highlighted, index, setHighlighted, categoryId, setCarrouselScroll, imageURL, title, id} = props;
     const carrouselElement = useRef()
+
+    const [image, setImage] = useState("")
+
+    useEffect(() => {
+        const loadImage = async () => {
+            const imagePath = `../assets/images/docs/${imageURL}`;
+
+            if(posterImages[imagePath]){
+                const image_url = await posterImages[imagePath]();
+                setImage(image_url.default);
+            }
+        }
+        
+        loadImage();
+    }, [])
 
     const posterRoute = `/posters/${id}`
     
