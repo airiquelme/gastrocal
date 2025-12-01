@@ -41,8 +41,8 @@ function Homepage(){
             subtitle="Revisa la documentación científica del modelo utilizado para calcular riesgos."
             icon={pdf_icon}
         >
-            <CalculatorRouteButton route={"/pdf"} key={1}>
-                Posters Clasificación EDA Protocolo Talca
+            <CalculatorRouteButton route={"/posters"} key={2}>
+                Ver Posters
             </CalculatorRouteButton>
         </HomepageSection>
        </main>
