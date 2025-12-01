@@ -1,47 +1,45 @@
 import { useEffect, useState } from "react";
 import PrimaryButton from "../components/PrimaryButton";
 import { useParams } from "react-router";
-import postersInfo from "../assets/data/posters/posters_info.json"
+import postersInfo from "../assets/data/posters/posters_info.json";
 
-const posterPDFs = import.meta.glob('../assets/docs/*.pdf', { eager: true });
+const posterModules = import.meta.glob('../assets/docs/*.pdf', {
+  eager: true,
+  import: 'default',
+});
+
+const posterPDFs = {};
+for (const [path, url] of Object.entries(posterModules)) {
+  const filename = path.split('/').pop();
+  posterPDFs[filename] = url;
+}
 
 function PosterViewPage(){
-    const { posterId } = useParams();
+  const { posterId } = useParams();
+  const [title, setTitle] = useState("");
+  const [posterURL, setPosterURL] = useState("");
+  const [document, setDocument] = useState("");
 
-    const [title, setTitle] = useState("")
-    const [posterURL, setPosterURL] = useState("")
-    const [document, setDocument] = useState("")
+  useEffect(() => {
+    const posters = postersInfo[0].posters;
+    const thisPoster = posters.find(poster => poster.id == posterId);
 
-
-    useEffect(() => {
-        const posters = postersInfo[0].posters
-        const thisPoster = posters.find(poster => poster.id == posterId)
-            
-        if(thisPoster){
-            setTitle(thisPoster.title)
-            setPosterURL(thisPoster.uri)
-        }
-    }, [posterId])
-
-    useEffect(() => {
-        const loadPoster = async () => {
-            const posterPath = `../assets/docs/${posterURL}`;
-            console.log(posterPDFs)
-            console.log(posterPath)
-    
-            if(posterPDFs[posterPath]){
-                const poster_url = await posterPDFs[posterPath];
-                console.log(poster_url)
-                setDocument(poster_url.default);
-            }
-        }
-
-        loadPoster();
-    }, [posterURL])
-
-    const openDocumentInOtherTab = () => {
-        window.open(document, "_blank").focus()
+    if (thisPoster) {
+      setTitle(thisPoster.title);
+      setPosterURL(thisPoster.uri);
     }
+  }, [posterId]);
+
+  useEffect(() => {
+    if (!posterURL) return;
+    const url = posterPDFs[posterURL];
+    if (url) setDocument(url);
+  }, [posterURL]);
+
+  const openDocumentInOtherTab = () => {
+    if (!document) return;
+    window.open(document, "_blank")?.focus();
+  };
 
     return (
         <main className="bg-slate-100 w-screen min-h-[calc(100vh-64px)] p-10 box-border">
