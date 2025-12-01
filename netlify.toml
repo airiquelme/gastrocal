@@ -2,3 +2,8 @@
 for = "/*.jsx"
 [headers.values]
   Content-Type = "application/javascript"
+  
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
