@@ -2,15 +2,14 @@ import { useRef } from "react";
 import CalculatorRouteButton from "./CalculatorRouteButton";
 
 function CarrouselElement(props){
-    const {highlighted, index, setHighlighted, categoryId, setCarrouselScroll, image, title, url} = props;
+    const {highlighted, index, setHighlighted, categoryId, setCarrouselScroll, image, title, id} = props;
     const carrouselElement = useRef()
 
-    const posterRoute = `/posters/${url}`
+    const posterRoute = `/posters/${id}`
     
-    const imageSize = highlighted ? "w-[130px]" : "w-[100px] mt-5"
+    const imageSize = highlighted ? "w-[150px]" : "w-[100px] mt-5"
 
     const handleImageClick = () => {
-        console.log(index)
         setHighlighted(prev => ({...prev, [categoryId]: index}))
         setCarrouselScroll(getElementPosition())
     }

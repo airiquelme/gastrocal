@@ -37,9 +37,10 @@ import { calculadora_molina } from './utils/calculadora_molina'
 
 import pdf_test from "./assets/docs/POSTERS CLASIFICACION EDA PROTOCOLO TALCA.pdf"
 import Posters from './routes/Posters'
+import PosterViewPage from './routes/PosterViewPage'
 
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
+  <StrictMode>
     <BrowserRouter>
       <Header />
       <Routes>
@@ -50,12 +51,13 @@ createRoot(document.getElementById('root')).render(
         <Route path="/calculadora-modelo-clinico" element={<NewCalculator calculator={form_adenocarcinoma_modelo_clinico} calculator_function={calculadora_modelo_clinico} default_values={default_values_adenocarcinoma_modelo_clinico} key={3} />} />
         <Route path="/calculadora-biomarcador-1" element={<NewCalculator calculator={form_adenocarcinoma_biomarcador_1} calculator_function={calculadora_biomarcador_1} default_values={default_values_adenocarcinoma_biomarcador_1} key={4} />} />
         */}
-        <Route path="/pdf" element={<PDFViewPage title={"Posters Clasificación EDA Protocolo Talca"} document={pdf_test} key={5} />} />
+        {/* <Route path="/pdf" element={<PDFViewPage title={"Posters Clasificación EDA Protocolo Talca"} document={pdf_test} key={5} />} /> */}
         <Route path="/calculadora-cancer-gastrico" element={<NewCalculator calculator={form_molina} calculator_function={calculadora_molina} default_values={default_values_molina} key={6} />} />
         <Route path="/posters" element={<Posters />} / >
+        <Route path="/posters/:posterId" element={<PosterViewPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <LogosContainer />
     </BrowserRouter>,
-  {/* </StrictMode>, */}
+  </StrictMode>,
 )

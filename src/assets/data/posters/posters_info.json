@@ -1,75 +1,56 @@
 [
     {
-        "id": "testing",
-        "title": "Testing",
+        "id": "posters",
+        "title": "Posters",
         "posters": [
             {
-                "title": "Poster de prueba",
-                "img": "/src/assets/images/docs/example.png",
-                "uri": "null.pdf"
+                "id": "ABYagi",
+                "title": "AB Yagi",
+                "img": "/src/assets/images/docs/ABYagi-Thumbnail.png",
+                "uri": "/src/assets/docs/ABYagi.pdf"
             },
             {
-                "title": "Poster de prueba 2",
-                "img": "/src/assets/images/docs/example.png",
-                "uri": "null.pdf"
+                "id": "KimuraTakemoto",
+                "title": "Kimura Takemoto",
+                "img": "/src/assets/images/docs/KimuraTakemoto-Thumbnail.png",
+                "uri": "/src/assets/docs/KimuraTakemoto.pdf"
             },
             {
-                "title": "Poster de prueba",
-                "img": "/src/assets/images/docs/example.png",
-                "uri": "null.pdf"
+                "id": "Kyoto",
+                "title": "Kyoto",
+                "img": "/src/assets/images/docs/Kyoto-Thumbnail.png",
+                "uri": "/src/assets/docs/Kyoto.pdf"
+            },
+            
+            {
+                "id": "LinkedColorImaging",
+                "title": "EGGIM Linked Color Imaging",
+                "img": "/src/assets/images/docs/LinkedColorImaging-Thumbnail.png",
+                "uri": "/src/assets/docs/LinkedColorImaging.pdf"
             },
             {
-                "title": "Poster de prueba 2",
-                "img": "/src/assets/images/docs/example.png",
-                "uri": "null.pdf"
+                "id": "NarrowBandImaging",
+                "title": "EGGIM Narrow Band Imaging",
+                "img": "/src/assets/images/docs/NarrowBandImaging-Thumbnail.png",
+                "uri": "/src/assets/docs/NarrowBandImaging.pdf"
             },
             {
-                "title": "Poster de prueba",
-                "img": "/src/assets/images/docs/example.png",
-                "uri": "null.pdf"
+                "id": "MesdaG",
+                "title": "MESDA-G",
+                "img": "/src/assets/images/docs/MesdaG-Thumbnail.png",
+                "uri": "/src/assets/docs/MesdaG.pdf"
             },
             {
-                "title": "Poster de prueba 2",
-                "img": "/src/assets/images/docs/example.png",
-                "uri": "null.pdf"
-            }
-        ]
-    },
-
-
-    {
-        "id": "testing_2",
-        "title": "Testing 2",
-        "posters": [
-            {
-                "title": "Poster de prueba",
-                "img": "/src/assets/images/docs/example.png",
-                "uri": "null.pdf"
+                "id": "Paris",
+                "title": "Paris",
+                "img": "/src/assets/images/docs/Paris-Thumbnail.png",
+                "uri": "/src/assets/docs/Paris.pdf"
             },
             {
-                "title": "Poster de prueba 2",
-                "img": "/src/assets/images/docs/example.png",
-                "uri": "null.pdf"
-            },
-            {
-                "title": "Poster de prueba",
-                "img": "/src/assets/images/docs/example.png",
-                "uri": "null.pdf"
-            },
-            {
-                "title": "Poster de prueba 2",
-                "img": "/src/assets/images/docs/example.png",
-                "uri": "null.pdf"
-            },
-            {
-                "title": "Poster de prueba",
-                "img": "/src/assets/images/docs/example.png",
-                "uri": "null.pdf"
-            },
-            {
-                "title": "Poster de prueba 2",
-                "img": "/src/assets/images/docs/example.png",
-                "uri": "null.pdf"
+                "id": "TUGCS",
+                "title": "TUGCS",
+                "img": "/src/assets/images/docs/TUGCS-Thumbnail.png",
+                "uri": "/src/assets/docs/TUGCS.pdf"
             }
         ]
     }

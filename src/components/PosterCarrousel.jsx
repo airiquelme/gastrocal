@@ -36,7 +36,7 @@ function PosterCarrousel({id, title, children, maxListLength, currHighlighted, s
         if(carrouselContent && carrouselContent.current){
             const carrouselContentPosition = carrouselContent.current.getBoundingClientRect().x
             const calculatedPosition = elementPosition - carrouselContentPosition
-            carrouselContent.current.scrollTo({
+            carrouselContent.current.scrollBy({
                 top: 0,
                 left: calculatedPosition,
                 behaviour: "smooth"
@@ -50,7 +50,7 @@ function PosterCarrousel({id, title, children, maxListLength, currHighlighted, s
             <div className="grid lg:grid-cols-[100px_auto_100px] gap-2">
                 <div className="hidden lg:flex w-[80px] h-[150px] m-auto">
                     <PrimaryButton action={moveCarrouselLeft}>
-                        <img src={arrowBack} alt="Atrás" />
+                        <img src={arrowBack} alt="Atrás" className="m-auto w-[40px]" />
                     </PrimaryButton>
                 </div>
                 <div className="overflow-hidden w-full min-h-[280px] scroll-smooth" ref={carrouselContent}>

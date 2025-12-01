@@ -126,7 +126,7 @@ function Posters(){
                                                     categoryId={category.id}
                                                     image={poster.img}
                                                     title={poster.title}
-                                                    url={poster.uri}
+                                                    id={poster.id}
                                                     index={showingPostersList[category.id].indexOf(index)}
                                                     key={index}
                                                 />
