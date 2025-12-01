@@ -8,6 +8,7 @@ function CarrouselElement(props){
     const posterRoute = `/posters/${id}`
     
     const imageSize = highlighted ? "w-[150px]" : "w-[100px] mt-5"
+    const titleSize = highlighted ? "text-lg" : "text-sm"
 
     const handleImageClick = () => {
         setHighlighted(prev => ({...prev, [categoryId]: index}))
@@ -24,16 +25,16 @@ function CarrouselElement(props){
     return (
         <div className="w-[200px] min-h-[270px]" ref={carrouselElement}>
             <img src={image} alt="Poster" className={`${imageSize} m-auto transition-all cursor-pointer`} onClick={handleImageClick} />
-            {
-                highlighted ? (
                     <div className="mt-5">
-                        <h4 className="mb-4 text-center font-medium text-bold text-lg">{title}</h4>
-                        <CalculatorRouteButton route={posterRoute}>
-                            Ver poster
-                        </CalculatorRouteButton>
-                    </div>
-                ) : null
-            }
+                        <h4 className={`mb-4 text-center font-medium text-bold ${titleSize}`}>{title}</h4>
+                         {
+                             highlighted ? (
+                            <CalculatorRouteButton route={posterRoute}>
+                                Ver poster
+                            </CalculatorRouteButton>
+                            ) : null
+                        }
+                </div>
         </div>
     )
 }
