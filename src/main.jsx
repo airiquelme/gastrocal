@@ -35,7 +35,7 @@ import form_molina from "./assets/data/molina/form.json"
 import default_values_molina from "./assets/data/molina/default.json"
 import { calculadora_molina } from './utils/calculadora_molina'
 
-import pdf_test from "./assets/docs/POSTERS CLASIFICACION EDA PROTOCOLO TALCA.pdf"
+// import pdf_test from "./assets/docs/POSTERS CLASIFICACION EDA PROTOCOLO TALCA.pdf"
 import Posters from './routes/Posters'
 import PosterViewPage from './routes/PosterViewPage'
 
