@@ -1,3 +1,4 @@
 -Cambio prioridades a semáforo
 
 -Navegador para pdfs con los documentos y posters
+    * Carrousel
