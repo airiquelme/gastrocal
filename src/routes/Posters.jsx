@@ -124,7 +124,7 @@ function Posters(){
                                                     highlighted={isHighlighted}
                                                     setHighlighted={setHighlightedPosters}
                                                     categoryId={category.id}
-                                                    image={poster.img}
+                                                    imageURL={poster.img}
                                                     title={poster.title}
                                                     id={poster.id}
                                                     index={showingPostersList[category.id].indexOf(index)}
