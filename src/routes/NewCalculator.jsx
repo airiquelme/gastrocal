@@ -63,7 +63,7 @@ function NewCalculator(props){
         setMostrarResultadoTexto("Ingresa valores en la calculadora")
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if(!resultados_en_pantalla){
@@ -74,7 +74,8 @@ function NewCalculator(props){
         }
         
         try{
-            setResultado(calculator_function(values))
+            const result = await calculator_function(values)
+            setResultado(result)
         }catch(error){
             setResultado(error)
         }
