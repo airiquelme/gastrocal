@@ -1,8 +1,15 @@
 const API_URL = "https://g0t3nx3a21.execute-api.sa-east-1.amazonaws.com/calcular"
 
 export const calculadora_molina = async (variables) => {
-    // Map old variable names to API format
     const { sexo, anno, mes, dia, igg_h_pylori, pep1, pep2, hta } = variables
+
+    const missing = Object.entries({ sexo, anno, mes, dia, igg_h_pylori, pep1, pep2, hta })
+        .filter(([_, v]) => v === "" || v === -1 || v === null || v === undefined)
+        .map(([k]) => k)
+
+    if (missing.length > 0) {
+        throw new Error("Parámetro inválido. Verifica si los datos están correctos")
+    }
 
     const birth = new Date(anno, mes, dia)
     const birthStr = birth.toISOString().split("T")[0]
